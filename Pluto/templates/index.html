@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pluto</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Home/index.css') }}">
+	</head>
+	<body>
+		<div class='container-fluid p-0'>
+			<nav class='navbar navbar-light py-2 px-5'>
+				<a href="{{ url_for('index') }}" class='navbar-brand mr-3'>Pluto</a>
+
+				<ul class='m-0 navbar-nav d-flex flex-row mr-4'>	
+					<li class='nav-link mr-3'>
+						<a href="" class='nav-item'>Home</a>
+					</li>
+					<li class='nav-link mr-3'>
+						<a href="" class='nav-item'>About</a>
+					</li>
+					<li class='nav-link mr-3'>
+						<a href="" class='nav-item'>Services</a>
+					</li>
+					<li class='nav-link mr-3'>
+						<a href="" class='nav-item'>Signup</a>
+					</li>
+					<li class='nav-link mr-3'>
+							<a href="" class='nav-item login'>Login</a>
+					</li>
+				</ul>
+			</nav>
+
+			<div class='row py-4 px-5 m-0 d-flex justify-content-center landing-page' style='overflow-x:hidden'>
+				<div class='col-5 d-flex py-4 flex-column'>
+					<p class='m-0 brand'>PLUTO</p>
+					<p class='subtext m-0 mt-1 pr-4 text-muted'>As a developer, it can be overwhelming keeping track of your deliverables, achieving your requirements and all. Or is it the stress involved in keeping track of all the next groundbreaking ideas you have. We understand and dont want you to miss out on creating the future.</p>
+					<div class='buttons d-flex mt-4'>
+						<a href="" class='mr-2' style='background:#FF8F42; color:#fff;border:none'>Signup</a>
+						<a href="">Login</a>
+					</div>
+				</div>
+
+				<div class='col-5' style='background:url("static/images/Home/pluto.jpg"); border-radius:5px; background-size:cover; height:100%;'>
+					
+				</div>
+			</div>
+			<div class='row section-about py-5 d-flex justify-content-center text-white' style='background:url("static/images/Home/concrete-wall.png")'>
+				<div class='col-10 col-sm-8 col-md-6 text-center'>
+					<p class='m-0 heading'>What is Pluto ?</p>
+					<p class='mt-3' style='line-height:1.7'>
+						Pluto was conceived as the ultimate Project Assistant. It is a tool intended to track progress your as you work on projects. From concept to creation, let Pluto assist
+						you as you about building the next big thing. Chart your progress as you go about determining requirements, implementing them and fixing those bugs that inhibit
+						user experience. Pluto is not just about ready made projects however. We recognize that every project began from an idea. As such, track your ideas as you come up
+						with them, fully define them and when you are ready, build! 
+					</p>
+				</div>
+			</div>
+			<div class='row section-functions py-2 py-md-5 d-flex flex-column flex-md-row justify-content-center align-items-center align-items-lg-start px-2 px-lg-5'>
+					<div class='col-11 col-sm-9 col-md-5 text-center text-md-left pt-3 py-md-5 mr-md-3 mr-lg-0'>
+						<p class='tag-line px-5'>BUILT FOR PRODUCTIVITY</p>
+						<p class='mt-2 px-5 tag-body text-muted'>Created as a tool to speed up development, but why stop there really, Pluto offers so much more</p>
+					</div>
+					<div class='col-11 col-sm-9 col-md-6 col-lg-5 d-flex py-3 flex-column align-items-center'>
+						<div class='d-flex flex-column flex-md-row text-center text-md-left mb-3'>
+							<img src='static/Images/Home/plan.svg' class='mr-3 mb-3 mb-md-0' width='50px' height='50px'/> 
+							<div class='d-flex flex-column align-items-center align-items-md-start'>
+								<p class='function m-0 mb-2 mb-md-3 font-weight-bold'>Planning In Projects</p>
+								<p class='function-text text-muted'>Always be aware of the current status of a project. What has been done,
+								what remains to be done and what needs to be improved.	</p>
+							</div>
+						</div>
+						<div class='d-flex flex-column flex-md-row text-center text-md-left mb-3'>
+							<img src='static/Images/Home/progress.svg' class='mr-3 mb-3 mb-md-0' width='50px' height='50px'/> 
+							<div class='d-flex flex-column align-items-center align-items-md-start'>
+								<p class='function m-0 mb-2 mb-md-3 font-weight-bold'>Track Your Progress Across Projects</p>
+								<p class='function-text text-muted'>Always be aware of the current status of a project. What has been done,
+								what remains to be done and what needs to be improved.	</p>
+							</div>
+						</div>
+						<div class='d-flex flex-column flex-md-row text-center text-md-left m-0'>
+							<img src='static/Images/Home/idea.svg' class='mr-3 mb-3 mb-md-0' width='50px' height='50px'/> 
+							<div class='d-flex flex-column align-items-center align-items-md-start'>
+								<p class='function m-0 mb-2 mb-md-3 font-weight-bold'>Craft Your Ideas</p>
+								<p class='function-text text-muted'>Give full expression to your creativity with Pluto. Come up with ideas, fully flesh them out and define its constructs.</p>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class='row d-flex justify-content-center footer py-5 px-5' style='background:url("static/images/Home/vertical_cloth.png")'>
+				<div class='col-3 d-flex flex-column mr-4'>
+					<p class='brand m-0 mb-2'>Pluto</p>
+					<p class='brand-text'>Streamlining the development process by enabling proper project
+					conception, planning and building</p>
+				</div>
+				<div class='col-4 d-flex flex-column'>
+					<p class='contact-heading mt-4'>Get In Touch</p>
+					<p class='brand-text m-0 mb-2'><i class='fa fa-envelope mr-2'></i> info@pluto.ng</p>
+					<p class='brand-text m-0 mb-2'><i class='fa fa-phone mr-2' style='font-size:1.3em'></i> +2348179868840</p>
+					<p class='brand-text'><i class='fa fa-home mr-2' style='font-size:1.4em'></i>
+						3, Bisi Awosika Road, Ologolo, Lekki
+					</p>
+				</div>
+				<div class='col-3'>
+					k.,m
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.container-fluid
+{
+	height:100vh;
+	width:100vw;
+	background:rgba(0,0,0,0.008);
+	overflow-x:hidden;
+}
+
+a
+{
+	text-decoration: none;
+	color:#000;
+}
+
+nav
+{
+	border-bottom:1px solid rgba(0,0,0,0.02);
+	/*justify-content:space-around !important;*/
+}
+
+.nav-item
+{
+	font-family:'Raleway', sans-serif !important;
+	color:rgba(0,0,0,0.5);
+	font-size:0.9em;
+}
+
+.nav-item.login
+{
+	padding:8px;
+	border:1px solid rgba(0,0,0,0.2);
+	border-radius:2px;
+}
+
+.navbar-brand
+{
+	font-family:'Darker Grotesque', sans-serif;
+	color:rgba(0,0,0,0.65) !important;
+	font-size:2em;
+}
+
+.brand
+{
+	font-size:6em;
+	font-family:'Dosis', sans-serif;
+}
+
+.subtext
+{
+	position:relative;
+	left:5px;
+	font-family:'Quicksand', sans-serif;
+	width:80%;
+	line-height:1.7;
+}
+
+.buttons
+{
+	position:relative;
+	left:5px;
+}
+
+.buttons a
+{
+	padding:7px;
+	border:1px solid rgba(0,0,0,0.12);
+	border-radius:4px;
+	font-family:'Raleway', sans-serif;
+	font-size:0.9em;
+}
+
+.landing-page
+{
+	height:calc(100vh - 73px);
+}
+
+.section-about
+{
+	font-family:'Raleway', sans-serif;	
+}
+
+.heading
+{
+	font-size:1.5em;
+}
+
+.section-functions
+{
+	/*background:rgba(0,0,0,0.008);*/
+	background:#fff;
+}
+
+.tag-line
+{
+	font-size:2.4em;
+	font-family:'Raleway', sans-serif;
+}
+
+.tag-body
+{
+	font-size:1.3em;
+	font-family:'Quicksand', sans-serif;
+}
+
+.function
+{
+	font-family:'Montserrat', sans-serif;
+	/*text-transform: uppercase; */x
+}
+
+.function-text
+{
+	font-family:'Quicksand', sans-serif;
+	width:80%;
+	/*font-size:0.9em;*/
+}
+
+.footer
+{
+	color:#fff;
+	/*height:50vh;*/
+}
+
+.footer .brand
+{
+	font-size:3em;
+	font-family:'Darker Grotesque', sans-serif;
+}
+
+.brand-text
+{
+	width:80%;
+	font-family:'Quicksand', sans-serif;
+	line-height:1.7;
+}
+
+.contact-heading
+{
+	font-size:1.4em;
+	font-family:'Raleway', sans-serif;
+}
+
+
+
+@media(max-width:991px)
+{
+	.function-text
+	{
+		width:90%;
+	}
+}
+
+
+@media(max-width:768px)
+{
+	.section-functions img
+	{
+		position:relative;
+		left:calc((100% - 50px)/2);
+	}
+
+	.tag-line
+	{
+		font-size:1.5em;
+	}
+
+	.tag-body
+	{
+		font-size:1.15em;
+	}
+}
