@@ -2,8 +2,54 @@
 <html>
 	<head>
 		<title>Pluto - Signup</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Signup/signup.css') }}">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	</head>
 	<body>
-		Le
+		
+		<div class='container-fluid' id='container' style='background:#3DDAD7;'>
+			
+			<div class='form-container d-flex justify-content-center align-items-center'>
+				
+				<form class='d-flex flex-column p-4'>
+					<p class='m-0 mb-4 brand text-center w-100'><a href="{{ url_for('index') }}">Pluto</a></p>
+					<input type="text" name="name" class='form-control form-control-sm mb-3 py-1' placeholder='Name'>
+					<input type="text" name="username" class='form-control form-control-sm mb-3' placeholder="Dev Nickname">
+					<input type="email" name="email" class='form-control form-control-sm mb-3' placeholder="Email">
+					<input type="password" name="password" class='form-control form-control-sm mb-3' placeholder="Password">
+					<button type='submit' class='py-2 mb-3'>Signup</button>
+					<p class='text-muted text-center w-100 login-text'>Already have an account?, <a href="{{ url_for('auth.login') }}" class='text-muted'>login</a></p>
+				</form>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
+		<script type="text/javascript">
+			particlesJS('container', {
+			    "particles":{
+			        "number":{
+			            "value":100,
+			        },
+			        "opacity":{
+			            "value":"0.5",
+			        },
+			        "size":{
+			            "value":"5",
+			        },
+			        "move":{
+			            "bounce":true
+			        }
+			    },
+			    "interactivity":{
+			        "events":{
+			            "onhover":{
+			                "mode":"grab"
+			            }
+			        }
+			    }
+			});
+		</script>
 	</body>
 </html>

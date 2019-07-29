@@ -1,0 +1,12 @@
+
+.container-fluid
+{/*
+	position:absolute;
+	top:100vh;
+	width:*/;
+}
+
+.img-backdrop
+{
+	background:url('../../Images/Login/gravel.png');
+}

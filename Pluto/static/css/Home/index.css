@@ -261,4 +261,15 @@ div.overlay
 		border:none;
 		padding:0;
 	}
+
+	.landing-page
+	{
+		height:calc(80vh - 73px);
+	}
+
+	.brand-parent
+	{
+		position:relative;
+		top:-13%;
+	}
 }

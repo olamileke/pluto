@@ -8,3 +8,10 @@ def signup():
 		print('leke')
 
 	return render_template('auth/signup.html')
+
+@bp.route('/login', methods=('GET', 'POST'))
+def login():
+	if request.method == 'POST':
+		print('leke')
+
+	return render_template('auth/login.html')
