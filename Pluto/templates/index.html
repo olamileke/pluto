@@ -38,19 +38,23 @@
 					</div>
 				</nav>
 
-				<img src='static/images/Home/rocket.jpg' class='overlay'/>
-				<div class='overlay'></div>
+				<img src='static/images/Home/rocket.jpg' class='overlay d-lg-none'/>
+				<div class='overlay d-lg-none'></div>
 
-				<div class='row py-lg-4 px-1 px-lg-5 m-0 d-flex align-items-center justify-content-center justify-content-sm-start align-items-lg-start landing-page' style='overflow-x:hidden'>
-					<div class='text-center brand-parent text-sm-left offset-sm-1 col-sm-9 col-lg-6 col-xl-5 d-flex py-4 flex-column align-items-center align-items-sm-start'>
+				<div class='row py-lg-4 px-1 px-lg-5 m-0 d-flex align-items-center justify-content-lg-center  align-items-lg-start landing-page' style='overflow-x:hidden'>
+					<div class='col-0 col-sm-1 d-lg-none'></div>
+					<div class='text-center brand-parent text-sm-left col-sm-9 col-lg-6 col-xl-5 d-flex py-4 flex-column align-items-center align-items-sm-start'>
 						<p class='m-0 brand'>PLUTO</p>
-						<p class='d-none d-sm-inline subtext m-0 mt-1 pr-sm-4'>As a developer, it can be overwhelming keeping track of your deliverables, achieving your requirements and all. Or is it the stress involved in keeping track of all the next groundbreaking ideas you have. We understand and dont want you to miss out on creating the future.</p>
+						<p class='d-none d-sm-inline subtext m-0 mt-1 pr-sm-4 text-muted'>As a developer, it can be overwhelming keeping track of your deliverables, achieving your requirements and all. Or is it the stress involved in keeping track of all the next groundbreaking ideas you have. We understand and dont want you to miss out on creating the future.</p>
 						<p class='d-inline d-sm-none m-0 mt-1 text-white subtext'>
 							Your Companion as You Create The Future
 						</p>
 						<div class='buttons mt-4'>
 							<a href="{{ url_for('auth.signup') }}" style='background:#FF8F42; color:#fff;border:none'>Get Started</a>
 						</div>
+					</div>
+					<div class='d-none d-lg-block col-lg-6 col-xl-5' style='background:url("static/images/Home/pluto.jpg"); border-radius:5px; background-size:cover; height:100%;'>
+
 					</div>
 				</div>
 			</div>

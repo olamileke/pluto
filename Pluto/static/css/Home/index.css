@@ -51,21 +51,21 @@ div.overlay
 .nav-link
 {
 	font-family:'Raleway', sans-serif !important;
-	color:#fff !important;
+	color:rgba(0,0,0,0.5) !important;
 	font-size:0.9em;
 }
 
 .nav-link.login
 {
 	padding:8px;
-	border:1px solid #fff;
+	border:1px solid rgba(0,0,0,0.2);
 	border-radius:2px;
 }
 
 .navbar-brand
 {
 	font-family:'Darker Grotesque', sans-serif;
-	color:#fff !important;
+	color:rgba(0,0,0,0.5) !important;
 	font-size:2em;
 }
 
@@ -83,7 +83,7 @@ div.overlay
 .brand
 {
 	font-size:6em;
-	color:#fff;
+	color:rgba(0,0,0,0.8);
 	font-family:'Dosis', sans-serif;
 }
 
@@ -91,7 +91,7 @@ div.overlay
 {
 	position:relative;
 	left:5px;
-	color:#fff;
+	/*color:;*/
 	font-family:'Quicksand', sans-serif;
 	width:80%;
 	line-height:1.7;
@@ -167,6 +167,7 @@ div.overlay
 
 .footer .brand
 {
+	color:#fff;
 	font-size:3em;
 	font-family:'Darker Grotesque', sans-serif;
 }
@@ -213,6 +214,31 @@ div.overlay
 		height:calc(60vh - 73px);
 		padding:80px 0 100px 0;
 	}
+
+	.nav-link
+	{
+		color:#fff !important;
+	}
+
+	.nav-link.login
+	{
+		border-color:#fff !important;
+	}
+
+	.subtext
+	{
+		color:#fff !important;
+	}
+
+	.brand
+	{
+		color:#fff !important;
+	}
+
+	.navbar-brand
+	{
+		color:#fff !important;
+	}
 }
 
 @media(min-width:0px) and (max-width:767px)
@@ -238,7 +264,7 @@ div.overlay
 
 	.brand
 	{
-		font-size:4.5em;
+		font-size:3.5em;
 	}
 }
 
