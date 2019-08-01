@@ -1,11 +1,18 @@
 import os
 from flask import Flask, render_template
+from flask_migrate import Migrate
 from . import auth
 
-def create_app(test_config=None):
-	app=Flask(__name__, instance_relative_config=True)
+migrate=Migrate()
 
-	app.config.from_mapping(SECRET_KEY='dev')
+def create_app(test_config=None):
+	app=Flask(__name__)
+	app.config.from_object(os.getenv('APP_SETTINGS'))
+
+	from . import models
+
+	models.db.init_app(app)
+	migrate.init_app(app, models.db)
 	app.register_blueprint(auth.bp)
 
 	@app.route('/')
