@@ -9,7 +9,6 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = 'SECRET-KEY'
     SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:Arsenalfc@localhost:5432/pluto'
-
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
