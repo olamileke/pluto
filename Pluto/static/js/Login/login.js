@@ -4,58 +4,55 @@ $(document).ready(function() {
 
 	// form validation
 
-	let signupForm=$('form');
-	let eightCharInputs=$('.eightchars');
-	let devInput=$('.form-control.dev');
-	let email=$('.form-control.email');
+	let loginForm=$('form');
+	let inputs=$('input')
 
-	signupForm.submit(function(e) {
+	loginForm.submit(function(e) {
 
 		$('.error-notif').remove();
 
 		if(!validate()) {
-
-			e.preventDefault()
+			
+			e.preventDefault();
 		}
 	})
+
 
 	function validate() {
 
 		let param=true;
 
-		if(!validateEightChars()) {
+		inputs.each(function() {
 
-			param=false;
-		}
+			let $this=$(this);
 
-		if(devInput.val().length < 5) {
+			if($this.hasClass('password')) {
 
-			devInput.after('<p class="error-notif">* Must be at least 5 characters long</p>');
-			param=false;
-		}
+				param=validatePassword($this);
+			}
+			else {
+
+				if($this.val().length < 5) {
+
+					param=false;
+					$this.after('<p class="error-notif">* Enter a valid identifier</p>')
+				}
+			}
+		})
 
 		return param;
 	}
 
 
-	// validating the name and password fields
+	function validatePassword(elem) {
 
-	function validateEightChars() {
+		if(elem.val().length < 8) {
 
-		let param=true;
+			elem.after('<p class="error-notif">* Password must be at least 8 characters long</p>')
+			return false;
+		}
 
-		eightCharInputs.each(function() {
-
-			let $this=$(this);
-
-			if($this.val().length < 8) {
-
-				$this.after('<p class="error-notif">* Must be at least 8 characters long</p>');
-				param=false;
-			}
-		})
-
-		return param;
+		return true;
 	}
 
 
@@ -91,4 +88,4 @@ $(document).ready(function() {
 			togglePassword.removeClass('fa-eye-slash').addClass('fa-eye');
 		}
 	})
-})
+}) 

@@ -4,6 +4,8 @@
 		<title>Pluto - Login</title>
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Login/login.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/toastr.min.css') }}">
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	</head>
@@ -17,12 +19,17 @@
 			<div class='row justify-content-center justify-content-sm-end align-items-center text-white px-5' style='height:100%'>
 				
 				<div class='pr-lg-5' style='z-index:9999'>
-					<form class='d-flex flex-column p-3 align-items-center'>
+					<form method='POST' action="{{ url_for('auth.login') }}" class='d-flex flex-column p-3 align-items-center'>
 						<p class='m-0 mb-4 brand'><a href="{{ url_for('index') }}" class='text-white'>Pluto</a></p>
 
-						<input type="text" name="name" class='form-control form-control-sm mb-4' placeholder='Email or Dev Nickname'>
+						<div class='w-100 mb-4'>
+							<input type="text" name="identifier" class='form-control form-control-sm' placeholder='Email or Dev Nickname'>
+						</div>
 
-						<input type="password" name="password" class='form-control form-control-sm mb-4' placeholder="Password">
+						<div class='w-100 mb-4' style='position:relative;'>
+							<input type="password" name="password" class='form-control form-control-sm password' placeholder="Password">
+							<i class='fa fa-eye toggle'></i>
+						</div>
 
 						<button type='submit' class='btn btn-primary w-100 mb-4'>Login</button>
 						<div class='text-left w-100 links'>
@@ -37,5 +44,18 @@
 				</div>
 			</div>
 		</div>
+
+		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/Login/login.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/toastr.min.js') }}"></script>pl
+		<script type="text/javascript">
+			
+			{% for category, message in get_flashed_messages(with_categories=true) %}
+
+				{% if category == 'danger' %}
+					toastr.error("{{ message }}")
+				{% endif %}
+			{% endfor %}
+		</script>
 	</body>
 </html>

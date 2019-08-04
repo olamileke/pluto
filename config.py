@@ -7,7 +7,7 @@ class Config(object):
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True
-    SECRET_KEY = 'SECRET-KEY'
+    SECRET_KEY = os.urandom(16)
     SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:Arsenalfc@localhost:5432/pluto'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 

@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 from flask_migrate import Migrate
 from . import auth
 
@@ -17,6 +17,9 @@ def create_app(test_config=None):
 
 	@app.route('/')
 	def index():
+		if 'user_id' in session:
+			return render_template('auth_index.html', leke=session['user_id']);
+
 		return render_template('index.html')
 
 	return app
