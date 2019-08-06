@@ -51,12 +51,7 @@
 			
 			{% for category, message in get_flashed_messages(with_categories=true) %}
 
-				{% if category == 'success' %}
-					toastr.success("{{ message }}")
-				{% else %}
-					toastr.error("{{ message }}")
-				{% endif%}
-
+				toastr.{{ category }}("{{ message }}")
 			{% endfor %}
 		</script>
 	</body>

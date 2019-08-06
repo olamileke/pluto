@@ -1,5 +1,7 @@
-from flask import render_template, Blueprint, request, flash, session, redirect, url_for
+import functools
+from flask import render_template, Blueprint, request, flash, session, redirect, url_for,g
 from Pluto.models import User, db
+from Pluto.middlewares import guestMiddleware
 from werkzeug.security import check_password_hash, generate_password_hash
 import os
 
@@ -7,6 +9,7 @@ bp = Blueprint('auth', __name__)
 user=None
 
 @bp.route('/signup', methods=('GET', 'POST'))
+@guestMiddleware
 def signup():
     if request.method == 'POST':
         if validateSignup(request.form):
@@ -24,9 +27,11 @@ def signup():
 
 
 @bp.route('/login', methods=('GET', 'POST'))
+@guestMiddleware
 def login():
     if request.method == 'POST':
         if validateLogin(request.form):
+            flash('Login successful', 'success')
             return redirect(url_for('index'))
         else:
             return render_template('auth/login.html')
@@ -34,22 +39,29 @@ def login():
     return render_template('auth/login.html')
 
 
+@bp.route('/logout')
+def logout():
+    session.clear()
+    flash('Logged out successfully', 'success')
+    return redirect(url_for('auth.login'))
+
+
 def validateSignup(formData):
     error = None
 
     if len(formData['name']) < 8:
         error = 'Name must be at least 8 characters long'
-        flash(error, 'danger')
+        flash(error, 'error')
         return False
 
     if len(formData['dev_name']) < 5:
         error = 'Dev Nickname must be at least 5 characters long'
-        flash(error, 'danger')
+        flash(error, 'error')
         return False
 
     if len(formData['password']) < 8:
         error = 'Password must be at least 8 characters long'
-        flash(error, 'danger')
+        flash(error, 'error')
         return False
 
     return True
@@ -60,12 +72,12 @@ def validateLogin(formData):
 
     if len(formData['identifier']) is 0:
         error = 'Please enter a valid identifier'
-        flash(error, 'danger')
+        flash(error, 'error')
         return False
 
     if len(formData['password']) < 8:
         error = 'Password must be at least 8 characters long'
-        flash(error, 'danger')
+        flash(error, 'error')
         return False
 
     user = User.query.filter(
@@ -73,14 +85,20 @@ def validateLogin(formData):
 
     if user is None:
         error = 'Incorrect Username or Password'
-        flash(error, 'danger')
+        flash(error, 'error')
         return False
     elif not check_password_hash(user.password, formData['password']):
         error = 'Incorrect Username or Password'
-        flash(error, 'danger')
+        flash(error, 'error')
         return False
     else:
         session.clear()
         session['user_id'] = user.id
-        flash('Login successful', 'success')
         return True
+
+@bp.before_app_request
+def getCurrentUser():
+    if 'user_id' in session:
+        g.user=User.query.filter(User.id==session['user_id']).first()
+    else:
+        g.user=None

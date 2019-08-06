@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+.container-fluid
+{
+	background:rgba(0,0,0,0.006);
+	min-height:100vh;
+	overflow-x:hidden;
+}
+
+.sidebar
+{
+	min-height:100vh;
+	background:#135589;
+}
+
+
+img
+{
+	object-fit:cover;
+}
+
+.sidebar
+{
+	font-family:'Quicksand', sans-serif;
+}
+
+.sidebar a
+{
+	color:#fff;
+	text-decoration:none;
+}
+
+.sidebar ul
+{
+	position:relative;
+	left:15%;
+	top:5%;
+}
+
+
+.sidebar i
+{
+	position:relative;
+	top:-1px;
+}
+
+.sidebar li.active
+{
+	background:rgba(255 , 255, 255, 0.8);
+	border-radius:5px;
+}
+
+.sidebar li.active a
+{
+	color:rgba(0,0,0,0.6);
+}
+
+.sidebar li.active i
+{
+	color:#000;
+}
+
+.dev-name
+{
+	color:rgba(255,255,255,0.4);
+}
+
+nav
+{
+	border-bottom:1px solid rgba(0,0,0,0.02);
+}
+
+.navbar-brand
+{
+	color:rgba(0,0,0,0.5);
+	font-family:'Montserrat', sans-serif;
+}
+
+
+.search-input
+{
+	font-family:'Quicksand', sans-serif;
+}

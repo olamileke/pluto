@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block title %} {% endblock %}</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/toastr.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Layouts/app.css') }}">
+		{% block css %} {% endblock %}
+	</head>
+	<body>
+
+		<div class='container-fluid p-0'>
+			<div class='row'>
+				<div class='col-3 sidebar p-5 d-flex flex-column justify-content-between'>
+					
+					<ul class='list-unstyled text-white pr-4 menu'>
+						<li class='d-flex flex-column mb-4'>
+							<img src="{{ url_for('static', filename='images/Users/leke.jpg') }}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>
+							<p class='mt-2 mb-1'>Hello {{ g.user.name.split(' ')[1] }} !</p>
+							<p class='m-0 dev-name'>{{ g.user.dev_name }}</p>
+						</li>
+
+						<li class='py-2 mb-2 d-flex align-items-center px-3'>
+							<a href="{{ url_for('index') }}"><i class='fa fa-dashboard mr-2'></i> Dashboard</a>
+						</li>
+						<li class='py-2 mb-2 d-flex align-items-center  px-3'>
+							<a href="{{ url_for('projects.new') }}"><i class='fa fa-expand mr-3'></i>New Project</a>
+						</li>
+						<li class='py-2 mb-2 d-flex align-items-center  px-3'>
+							<a href=""><i class='fa fa-tint mr-3'></i> New Idea</a>
+						</li>
+						<li class='py-2 mb-2 d-flex align-items-center  px-3'>
+							<a href=""><i class="fa fa-tasks mr-2"></i> Projects</a>
+						</li>
+						<li class='py-2 mb-2 d-flex align-items-center  px-3'>
+							<a href=""><i class='fa fa-bolt mr-3'></i> Ideas</a>
+						</li>
+					</ul>
+
+					<ul class='list-unstyled text-white pr-4 options'>
+						<li class='py-2 mb-2 d-flex align-items-center px-3'>
+							<a href=""><i class='fa fa-refresh mr-2'></i> Update Details</a>
+						</li>
+						<li class='py-2 mb-2 d-flex align-items-center px-3'>
+							<a href="{{ url_for('auth.logout') }}"><i class='fa fa-sign-out mr-2'></i> Logout</a>
+						</li>
+					</ul>
+
+				</div>
+				<div class='col-9 d-flex flex-column p-0'>
+					<nav class='py-3 px-4 d-flex justify-content-between'>
+						<a href="{{ url_for('index') }}" class='navbar-brand mr-auto'>Pluto</a>
+						<div class='mr-4 d-flex align-items-center'>
+							<form>
+								<input type="" name="" class='form-control form-control-sm search-input' placeholder='Search'>
+							</form>
+						</div>
+					</nav>
+					{% block body %}
+						
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/Layouts/app.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/toastr.min.js') }}"></script>		
+		<script type="text/javascript">
+			
+			{% for category, message in get_flashed_messages(with_categories=true) %}
+
+				toastr.{{ category }}("{{ message }}")
+			{% endfor %}
+		</script>
+		{% block js %} {% endblock %}
+	</body>
+</html>

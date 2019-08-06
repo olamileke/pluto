@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Pluto</title>
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/toastr.min.css') }}">
-	</head>
-	<body>
-		Auth Logged In
+{% extends 'layouts/app.html' %}
 
-		{{ leke }}
+{% block title %} Pluto - Dashboard {% endblock %}
 
-		<script type="text/javascript" src="{{ url_for('static', filename='js/toastr.min.js') }}"></script>		
-		<script type="text/javascript">
-			
-			{% for category, message in get_flashed_messages(with_categories=true) %}
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Dashboard/dashboard.css') }}">
+{% endblock %}
 
-				{% if category == 'success' %}
-					toastr.error("{{ message }}")
-				{% endif %}
-			{% endfor %}
-		</script>
-	</body>
-</html>
+{% block body %}
+	<div class='px-4 mt-4'>
+		<p class='heading h5'>Ongoing Projects</p>
+	</div>
+{% endblock %}

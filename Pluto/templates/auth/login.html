@@ -52,9 +52,7 @@
 			
 			{% for category, message in get_flashed_messages(with_categories=true) %}
 
-				{% if category == 'danger' %}
-					toastr.error("{{ message }}")
-				{% endif %}
+				toastr.{{ category }}("{{ message }}")				
 			{% endfor %}
 		</script>
 	</body>
