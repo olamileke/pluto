@@ -3,10 +3,51 @@
 {% block title %} New Project {% endblock %}
 
 {% block css %}
-
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Projects/new.css') }}">
 {% endblock %}
 
 
 {% block body %}
-	Leke
+
+<div class="px-5 py-4 row">
+	
+	<div class='offset-2'></div>
+	<div class='col-6 d-flex flex-column'>
+		<p class='heading m-0 mb-2'>Create a New Project</p>
+		<span class='text-muted sub-heading mb-4'>* setup your project with required information</span>
+
+		<form method='POST' action="{{ url_for('projects.new') }}" enctype='multipart/form-data'>
+			<div class='form-group'>
+				<label for='name' class='text-muted'>Name</label>
+				<input type="text" name="name" id='name' class='form-control form-control-sm elements'>
+			</div>
+			<div class='form-group'>
+				<div class='d-flex align-items-end img-container'>
+					<div class='image-parent mr-3' style='position:relative;'>
+						<img src="#" class='project-img'>
+					</div>
+					<input type="file" name="image" id='fileInput' style='display:none'>
+					<button style='background:#EDFAFD;' class='px-2 upload' type='button'>Add Image</button>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label for='about' class='text-muted'>About</label>
+				<textarea class='form-control elements' name='about' rows='4' id='about'></textarea>
+			</div>
+			<div class='form-group'>
+				<label for='link' class='text-muted'>github repo</label>
+				<input type="text" name="github_link" class='form-control form-control-sm'>
+			</div>
+			<div class='form-group'>
+				<button type='submit' class='create px-2 py-1'>Create</button>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+	
+	<script type="text/javascript" src="{{ url_for('static', filename='js/Projects/new.js') }}"></script>
 {% endblock %}

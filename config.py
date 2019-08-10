@@ -10,6 +10,7 @@ class Config(object):
     SECRET_KEY = os.urandom(16)
     SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:Arsenalfc@localhost:5432/pluto'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    USER_IMAGES_FOLDER='static/images/Users'
 
 
 class ProductionConfig(Config):
