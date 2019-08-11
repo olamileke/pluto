@@ -6,8 +6,8 @@ $(document).ready(function() {
 
 	let menuOptions=$('ul.menu li');
 	let path=window.location.pathname
-	let paths=['/','/projects/new']
-	let optionTexts=['Dashboard', 'New Project']
+	let paths=['/','/projects/new', '/ideas/new']
+	let optionTexts=['Dashboard', 'New Project', 'New Idea']
 
 	
 	for(let i=0; i < paths.length; i++) {

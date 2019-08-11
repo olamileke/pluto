@@ -74,7 +74,7 @@ $(document).ready(function() {
 		$('.error-notif').remove();
 		if(!validate()) {
 
-			// e.preventDefault();
+			e.preventDefault();
 		}
 	})
 
@@ -87,7 +87,7 @@ $(document).ready(function() {
 
 		if(fileInput.prop('files').length == 0) {
 
-			imgContainer.after("<p class='error-notif mt-2'>* Image is required</p>");
+			imgContainer.after("<p class='error-notif m-0 mt-2'>* Image is required</p>");
 			param=false;
 		}
 
@@ -106,7 +106,7 @@ $(document).ready(function() {
 			if($this.val().length < 5) {
 
 				param=false;
-				$this.after("<p class='error-notif mt-2'>* Must be at least 5 characters in length</p>");
+				$this.after("<p class='error-notif m-0 mt-2'>* Must be at least 5 characters in length</p>");
 			}
 		})
 

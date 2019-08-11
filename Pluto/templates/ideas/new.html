@@ -1,0 +1,44 @@
+{% extends 'layouts/app.html' %}
+
+{% block title %} New Idea {% endblock %}
+
+{% block css %}  
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Ideas/new.css') }}">
+{% endblock %}
+
+{% block body %}
+	
+	<div class="px-5 py-3 row">
+	
+		<div class='offset-2'></div>
+			<div class='col-6 d-flex flex-column'>
+				<p class='heading m-0 mb-2'>Add a New Idea</p>
+				<span class='text-muted sub-heading mb-4'>* properly define the contours of your next groundbreaking idea</span>
+
+				<form action="{{ url_for('ideas.new') }}" method='POST'>
+					
+					<div class='form-group'>
+						<label for='name' class='text-muted'>Tentative Name</label>
+						<input type="text" name="name" id='name' class='form-control form-control-sm elements'>
+						<p class='text-muted m-0 mt-2 sub-text'>creative names please!</p>
+					</div>
+					<div class='form-group'>
+						<label for='premise' class='text-muted'>Premise</label>
+						<textarea class='form-control elements' name='premise' id='premise' rows='4'></textarea>
+						<p class='text-muted m-0 mt-2'>what exactly do you have in mind ?</p>
+					</div>
+					<div class='form-group'>
+						<button type='submit' class='create px-2 py-2'>Add Idea</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+
+{% block js %}
+	
+	<script type="text/javascript" src="{{ url_for('static', filename='js/Ideas/new.js') }}"></script>
+{% endblock %}

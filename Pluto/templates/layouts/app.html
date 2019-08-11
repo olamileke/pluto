@@ -28,7 +28,7 @@
 							<a href="{{ url_for('projects.new') }}"><i class='fa fa-expand mr-3'></i>New Project</a>
 						</li>
 						<li class='py-2 mb-2 d-flex align-items-center  px-3'>
-							<a href=""><i class='fa fa-tint mr-3'></i> New Idea</a>
+							<a href="{{ url_for('ideas.new') }}"><i class='fa fa-tint mr-3'></i> New Idea</a>
 						</li>
 						<li class='py-2 mb-2 d-flex align-items-center  px-3'>
 							<a href=""><i class="fa fa-tasks mr-2"></i> Projects</a>
@@ -48,6 +48,7 @@
 					</ul>
 
 				</div>
+				<div class='offset-3'></div>
 				<div class='col-9 d-flex flex-column p-0'>
 					<nav class='py-3 px-4 d-flex justify-content-between'>
 						<a href="{{ url_for('index') }}" class='navbar-brand mr-auto'>Pluto</a>

@@ -1,6 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap');
 
 .heading
 {
 	font-family:'Quicksand', sans-serif;
 	color:rgba(0,0,0,0.6);
 }
+
+
+.project-name
+{
+	font-family:'Lexend Deca', sans-serif;
+	font-size:1.1em;
+}
+
+.info
+{
+	font-family:'Quicksand', sans-serif;
+}
+
+.fa-check
+{
+	color:green;
+}
+
+

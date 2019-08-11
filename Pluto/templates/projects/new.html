@@ -9,7 +9,7 @@
 
 {% block body %}
 
-<div class="px-5 py-4 row">
+<div class="px-5 py-3 row">
 	
 	<div class='offset-2'></div>
 	<div class='col-6 d-flex flex-column'>
@@ -20,6 +20,7 @@
 			<div class='form-group'>
 				<label for='name' class='text-muted'>Name</label>
 				<input type="text" name="name" id='name' class='form-control form-control-sm elements'>
+				<p class='text-muted m-0 mt-2 sub-text'>explore the whole gamut here, be creative</p>
 			</div>
 			<div class='form-group'>
 				<div class='d-flex align-items-end img-container'>
@@ -33,13 +34,14 @@
 			<div class='form-group'>
 				<label for='about' class='text-muted'>About</label>
 				<textarea class='form-control elements' name='about' rows='4' id='about'></textarea>
+				<p class='text-muted m-0 mt-2 sub-text'>a short description of the project</p>
 			</div>
 			<div class='form-group'>
-				<label for='link' class='text-muted'>github repo</label>
+				<label for='link' class='text-muted'>github repo (optional)</label>
 				<input type="text" name="github_link" class='form-control form-control-sm'>
 			</div>
 			<div class='form-group'>
-				<button type='submit' class='create px-2 py-1'>Create</button>
+				<button type='submit' class='create px-2 py-2'>Create Project</button>
 			</div>
 		</form>
 	</div>
