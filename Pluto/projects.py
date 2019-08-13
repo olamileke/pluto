@@ -3,7 +3,7 @@ from Pluto.middlewares import authMiddleware
 from Pluto.models import Project, db
 from werkzeug.utils import secure_filename
 import time
-import os
+from os.path import join
 
 bp = Blueprint('projects', __name__, url_prefix='/projects')
 
@@ -17,8 +17,8 @@ def new():
         if validateProjectInfo(request.form, request.files):
             image=request.files['image']
             filename=str(time.time()) + secure_filename(image.filename)
-            UPLOADS_FOLDER=os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static/images/Projects')
-            image.save(UPLOADS_FOLDER+'/'+filename)
+            UPLOADS_FOLDER=join(current_app.config['BASEDIR'], 'pluto', 'static', 'images', 'Projects')
+            image.save(join(UPLOADS_FOLDER,filename))
 
             if request.form['github_link'] == '':
             	request.form['github_link']=None
@@ -31,6 +31,14 @@ def new():
             return redirect(url_for('projects.new'))
 
     return render_template('projects/new.html')
+
+
+@bp.route('/<int:id>/<slug>')
+@authMiddleware
+def view(id, slug):
+    project=Project.query.filter((Project.id == id)).first()
+    return render_template('projects/view.html', project=project)
+
 
 
 def validateProjectInfo(form, files):

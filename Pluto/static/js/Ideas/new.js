@@ -2,13 +2,12 @@
 
 $(document).ready(function() {
 
-	let formElements=$('.elements');
-	let form=$('form');
-
+	let form=$('.idea-form');
+	let formElements=form.find('.elements');
 
 	form.submit(function(e) {
 
-		$('.error-notif').remove();
+		form.find('.error-notif').remove();
 		if(!validate()) {
 
 			e.preventDefault();

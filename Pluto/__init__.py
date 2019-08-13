@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from . import auth
 from . import projects
 from . import ideas
+from . import user
 
 migrate=Migrate()
 
@@ -19,6 +20,7 @@ def create_app(test_config=None):
 	app.register_blueprint(auth.bp)
 	app.register_blueprint(projects.bp)
 	app.register_blueprint(ideas.bp)
+	app.register_blueprint(user.bp)
 
 	@app.route('/')
 	def index():
@@ -29,4 +31,6 @@ def create_app(test_config=None):
 		return render_template('index.html')
 
 	return app
+
+
 

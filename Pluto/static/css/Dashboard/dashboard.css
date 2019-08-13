@@ -23,4 +23,32 @@
 	color:green;
 }
 
+a
+{
+	text-decoration: none;
+	color:unset;
+}
+
+.projects-container a
+{
+	position:relative;
+	top:0;
+	transition:top 0.5s ease-out;
+    -moz-transition:top 0.5s ease-out  /* Firefox 4 */
+    -webkit-transition:top 0.5s ease-out; /* Safari and Chrome */
+    -o-transition:top 0.5s ease-out; /* Otop 0.5s linearpera */
+    -ms-transition:top 0.5s ease-out; /* Ex*/
+}
+
+.projects-container a:hover
+{
+	top:-5px;
+}
+
+a:hover
+{
+	text-decoration: none;
+	color:unset;
+}
+
 

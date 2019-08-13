@@ -16,7 +16,7 @@
 		<p class='heading m-0 mb-2'>Create a New Project</p>
 		<span class='text-muted sub-heading mb-4'>* setup your project with required information</span>
 
-		<form method='POST' action="{{ url_for('projects.new') }}" enctype='multipart/form-data'>
+		<form method='POST' action="{{ url_for('projects.new') }}" class='project-form' enctype='multipart/form-data'>
 			<div class='form-group'>
 				<label for='name' class='text-muted'>Name</label>
 				<input type="text" name="name" id='name' class='form-control form-control-sm elements'>

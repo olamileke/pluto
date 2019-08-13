@@ -16,7 +16,14 @@
 					
 					<ul class='list-unstyled text-white pr-4 menu'>
 						<li class='d-flex flex-column mb-4'>
-							<img src="{{ url_for('static', filename='images/Users/leke.jpg') }}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>
+
+							{% if g.user.avatar is none %}
+								<img src="{{ url_for('static', filename='images/Users/anon.png') }}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>
+							{% else %}
+
+								<img src="static/images/Users/{{g.user.avatar}}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>	
+							{% endif %}
+							
 							<p class='mt-2 mb-1'>Hello {{ g.user.name.split(' ')[1] }} !</p>
 							<p class='m-0 dev-name'>{{ g.user.dev_name }}</p>
 						</li>
@@ -40,7 +47,7 @@
 
 					<ul class='list-unstyled text-white pr-4 options'>
 						<li class='py-2 mb-2 d-flex align-items-center px-3'>
-							<a href=""><i class='fa fa-refresh mr-2'></i> Update Details</a>
+							<a href="#exampleModal" data-toggle="modal"><i class='fa fa-refresh mr-2'></i> Update Details</a>
 						</li>
 						<li class='py-2 mb-2 d-flex align-items-center px-3'>
 							<a href="{{ url_for('auth.logout') }}"><i class='fa fa-sign-out mr-2'></i> Logout</a>
@@ -65,8 +72,57 @@
 			</div>
 		</div>
 
+		<div class="modal fade" tabindex="-1" role="dialog" id='exampleModal'>
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		       	Update your Pluto Details
+		      </div>
+		      <div class="modal-body px-3">
+		      		
+		      	<form action="{{ url_for('user.update') }}" method='POST' enctype="multipart/form-data">
+		      		<div class='row'>
+		      			<div class='form-group col-6'>
+		      				<label for='name' class='text-muted	'>Name</label>
+		      				<input type="text" name="name" value="{{ g.user.name }}" class='form-control form-control-sm elements'id='name'>
+		      			</div>
+		      			<div class='form-group col-6'>
+		      				<label for='dev_name' class='text-muted'>Dev Name</label>
+		      				<input type="text" name="dev_name" value="{{ g.user.dev_name }}" class='form-control form-control-sm elements' id='dev_name'>
+		      			</div>
+		      		</div>
+		      		<div class='row'>
+		      			<div class='form-group col-6'>
+		      				<label for='password'>Password</label>
+		      				<input type="password" name="password" class='form-control form-control-sm'>
+		      			</div>
+		      			<div class='form-group col-6 d-flex align-items-end d-flex'>
+		      				<div class='image-parent mr-3'>
+		      					<img src="#">
+		      				</div>
+		      				<button style='background:#EDFAFD;outline:none;border:1px solid rgba(0,0,0,0.06); font-size:0.8em;border-radius:4px;padding-top:5px; padding-bottom:5px;' type='button' class='upload'>Change Avatar</button>
+		      				<input type="file" class='file-input' name="image" style='display:none'>
+		      			</div>
+		      		</div>
+		      		<div class='row'>
+		      			<div class='form-group col-6'>
+		      				<button type='submit' class='update py-1'>Update</button>
+		      			</div>
+		      		</div>
+		      		<input type="hidden" name="url" value='/' class='url'>
+		      	</form>		      	
+		      </div>
+		      <div class="modal-footer">
+		      	<button class='close-modal py-1 text-muted' style='background:#fff; font-family:"Quicksand", sans-serif; border:1px solid rgba(0,0,0,0.1)'>Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/Layouts/app.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/Layouts/update.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/toastr.min.js') }}"></script>		
 		<script type="text/javascript">
 			

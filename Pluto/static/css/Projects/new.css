@@ -61,6 +61,7 @@ button
 	border:1px solid rgba(0,0,0,0.06);
 }
 
+
 button.upload
 {
 	height:36px;
@@ -74,6 +75,7 @@ button.create
 	color:#fff;
 	font-size:0.9em;
 }
+
 
 .error-notif
 {

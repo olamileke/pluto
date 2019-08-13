@@ -80,8 +80,7 @@ def validateLogin(formData):
         flash(error, 'error')
         return False
 
-    user = User.query.filter(
-        (User.email == formData['identifier'] or User.dev_name == formData['identifier'])).first()
+    user = User.query.filter((User.email == formData['identifier'] or User.dev_name == formData['identifier'])).first()
 
     if user is None:
         error = 'Incorrect Username or Password'

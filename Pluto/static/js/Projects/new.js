@@ -5,9 +5,10 @@ $(document).ready(function() {
 
 	// Image Preview Logic
 
-	let uploadbtn=$('button.upload');
-	let fileInput=$('#fileInput');
-	let imgParent=$('.image-parent');
+	let form=$('.project-form');
+	let uploadbtn=form.find('button.upload');
+	let fileInput=form.find('#fileInput');
+	let imgParent=form.find('.image-parent');
 	let imageTypes=['jpg','jpeg','png','JPEG','PNG','JPG'];
 
 	uploadbtn.click(function() {
@@ -45,11 +46,17 @@ $(document).ready(function() {
 
 	function validateFile(file) {
 
-		let type=file.type.split('/')[1];
+		let types=file.type.split('/');
 
-		if(imageTypes.indexOf(type) == -1) {
+		if(types.length == 1) {
 
-			toastr.error('File format is not accepted');
+			toastr.error("Invalid file format");
+			return false;
+		}
+
+		if(imageTypes.indexOf(types[1].toLowerCase()) == -1) {
+
+			toastr.error('Invalid file format');
 			return false;
 		}
 
@@ -65,13 +72,12 @@ $(document).ready(function() {
 
 	// validation logic
 
-	let form=$('form');
-	let elements=$('.elements');
+	let elements=form.find('.elements');
 	let imgContainer=$('.img-container');
 
 	form.submit(function(e) {
 
-		$('.error-notif').remove();
+		form.find('.error-notif').remove();
 		if(!validate()) {
 
 			e.preventDefault();
