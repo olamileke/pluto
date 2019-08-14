@@ -21,8 +21,8 @@
 				<div class='loaded bg-success'></div>
 			</div>
 			<div class='d-flex'>
-				<button class='btn btn-default btn-sm py-2 mr-2' style='background:#EDFAFD; border:1px solid rgba(0,0,0,0.06)' data-target='#newTaskModal' data-toggle="modal"><i class='fa fa-plus mr-2'></i> Add Task</button>
-				<button class='btn btn-default btn-sm py-2 mr-2' style='background:#17A2B8;color:#fff;'>Edit</button>
+				<button class='btn btn-primary btn-sm py-2 mr-2' data-target='#newTaskModal' data-toggle="modal"><i class='fa fa-plus mr-2'></i> Add Task</button>
+				<a class='btn btn-info btn-sm py-2 mr-2' style='color:#fff;' href="{{ url_for('projects.edit', id=project.id) }}">Edit</a>
 			</div>
 		</div>
 	</div>
