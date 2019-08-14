@@ -1,3 +1,61 @@
 {% extends 'layouts/app.html' %}
 
 {% block title %} {{ project.name }} {% endblock %}
+
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Projects/view.css') }}">
+{% endblock %}
+
+
+{% block body %}
+	
+	<div class="ml-5 mr-4 mt-3 py-3 row title-header d-flex row">
+		<div class='col-3'>
+			<img src="{{ g.URL }}/static/images/Projects/{{ project.picture }}">
+		</div>
+		<div class='d-flex flex-column py-2 col-5'>
+			<p class='m-0 title mb-2'>{{ project.name }}</p>
+			<p class='text-muted mb-3'>{{ project.about }}</p>
+			<div class='py-2 loader mb-3' style='position:relative;'>
+				<div class='loaded bg-success'></div>
+			</div>
+			<div class='d-flex'>
+				<button class='btn btn-default btn-sm py-2 mr-2' style='background:#EDFAFD; border:1px solid rgba(0,0,0,0.06)' data-target='#newTaskModal' data-toggle="modal"><i class='fa fa-plus mr-2'></i> Add Task</button>
+				<button class='btn btn-default btn-sm py-2 mr-2' style='background:#17A2B8;color:#fff;'>Edit</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" tabindex="-1" role="dialog" id='newTaskModal'>
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		       	{{ project.name }} - New Task
+		      </div>
+		      <div class="modal-body px-3">
+		      		
+		      	    <form class='task-form' method='POST'>
+		      	    	<div class='form-group w-100'>
+		      	    		<input type="text" name="task" class='form-control form-control-sm mr-2' placeholder="Task">
+		      	    	</div>
+		      	    	<button type='button' style='background:#29AB87;color:#fff; font-size:0.9em;' class='py-1 d-flex align-items-center'>
+		      	    		<p class='m-0 mr-2'>Add Task</p>
+		      	    		<div class='loader d-none'></div>
+		      	    	</button>
+		      	    </form>  	
+		      </div>
+		      <div class="modal-footer">
+		      	<button class='close-modal py-1 text-muted' style='background:#fff; font-family:"Quicksand", sans-serif; border:1px solid rgba(0,0,0,0.1)' data-dismiss="modal" id='submitBtn'>Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+{% endblock %}
+
+
+{% block js %}
+	
+	<script type="text/javascript" src="{{ url_for('static', filename='js/Projects/view.js') }}"></script>
+{% endblock %}

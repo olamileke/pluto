@@ -1,6 +1,7 @@
 import os
 
 class Config(object):
+    APP_URL='http://localhost:5000'
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True
@@ -8,6 +9,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:Arsenalfc@localhost:5432/pluto'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     BASEDIR=os.path.abspath(os.path.dirname(__file__))
+
 
 
 class ProductionConfig(Config):

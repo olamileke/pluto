@@ -7,21 +7,23 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/toastr.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Layouts/app.css') }}">
 		{% block css %} {% endblock %}
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	</head>
 	<body>
 
 		<div class='container-fluid p-0'>
 			<div class='row'>
-				<div class='col-3 sidebar p-5 d-flex flex-column justify-content-between'>
+				<div class='col-lg-3 d-none d-lg-block sidebar p-5 d-lg-flex flex-column justify-content-between'>
 					
 					<ul class='list-unstyled text-white pr-4 menu'>
 						<li class='d-flex flex-column mb-4'>
 
 							{% if g.user.avatar is none %}
-								<img src="{{ url_for('static', filename='images/Users/anon.png') }}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>
+								<img src="{{ g.URL }}/static/images/Users/anon.png" class='mb-2' width='65px' height="65px" style='border-radius:50%'>
 							{% else %}
 
-								<img src="static/images/Users/{{g.user.avatar}}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>	
+								<img src="{{ g.URL }}/static/images/Users/{{g.user.avatar}}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>	
 							{% endif %}
 							
 							<p class='mt-2 mb-1'>Hello {{ g.user.name.split(' ')[1] }} !</p>
@@ -38,7 +40,7 @@
 							<a href="{{ url_for('ideas.new') }}"><i class='fa fa-tint mr-3'></i> New Idea</a>
 						</li>
 						<li class='py-2 mb-2 d-flex align-items-center  px-3'>
-							<a href=""><i class="fa fa-tasks mr-2"></i> Projects</a>
+							<a href="{{ url_for('projects.all') }}"><i class="fa fa-tasks mr-2"></i> Projects</a>
 						</li>
 						<li class='py-2 mb-2 d-flex align-items-center  px-3'>
 							<a href=""><i class='fa fa-bolt mr-3'></i> Ideas</a>
@@ -47,7 +49,7 @@
 
 					<ul class='list-unstyled text-white pr-4 options'>
 						<li class='py-2 mb-2 d-flex align-items-center px-3'>
-							<a href="#exampleModal" data-toggle="modal"><i class='fa fa-refresh mr-2'></i> Update Details</a>
+							<a href="#updateDetailsModal" data-toggle="modal"><i class='fa fa-refresh mr-2'></i> Update Details</a>
 						</li>
 						<li class='py-2 mb-2 d-flex align-items-center px-3'>
 							<a href="{{ url_for('auth.logout') }}"><i class='fa fa-sign-out mr-2'></i> Logout</a>
@@ -56,7 +58,7 @@
 
 				</div>
 				<div class='offset-3'></div>
-				<div class='col-9 d-flex flex-column p-0'>
+				<div class='col-lg-9 d-flex flex-column p-0'>
 					<nav class='py-3 px-4 d-flex justify-content-between'>
 						<a href="{{ url_for('index') }}" class='navbar-brand mr-auto'>Pluto</a>
 						<div class='mr-4 d-flex align-items-center'>
@@ -72,7 +74,7 @@
 			</div>
 		</div>
 
-		<div class="modal fade" tabindex="-1" role="dialog" id='exampleModal'>
+		<div class="modal fade" tabindex="-1" role="dialog" id='updateDetailsModal'>
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -113,7 +115,7 @@
 		      	</form>		      	
 		      </div>
 		      <div class="modal-footer">
-		      	<button class='close-modal py-1 text-muted' style='background:#fff; font-family:"Quicksand", sans-serif; border:1px solid rgba(0,0,0,0.1)'>Close</button>
+		      	<button class='close-modal py-1 text-muted' style='background:#fff; font-family:"Quicksand", sans-serif; border:1px solid rgba(0,0,0,0.1)' data-dismiss="modal">Close</button>
 		      </div>
 		    </div>
 		  </div>

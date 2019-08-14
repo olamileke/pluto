@@ -1,5 +1,5 @@
 import functools
-from flask import render_template, Blueprint, request, flash, session, redirect, url_for,g
+from flask import render_template, Blueprint, current_app, request, flash, session, redirect, url_for,g
 from Pluto.models import User, db
 from Pluto.middlewares import guestMiddleware
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -83,7 +83,7 @@ def validateLogin(formData):
     user = User.query.filter((User.email == formData['identifier'] or User.dev_name == formData['identifier'])).first()
 
     if user is None:
-        error = 'Incorrect Username or Password'
+        error = 'Incorrect Usernameame or Password'
         flash(error, 'error')
         return False
     elif not check_password_hash(user.password, formData['password']):
@@ -99,5 +99,6 @@ def validateLogin(formData):
 def getCurrentUser():
     if 'user_id' in session:
         g.user=User.query.filter(User.id==session['user_id']).first()
+        g.URL=current_app.config['APP_URL']
     else:
         g.user=None

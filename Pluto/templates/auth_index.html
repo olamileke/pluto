@@ -32,6 +32,11 @@
 		</div>
 	{% else %}
 
-
+		<div class='px-5 d-flex flex-column align-items-center null'>
+			<div class='text-center'>
+				<img src="{{ url_for('static', filename='images/AuthHome/empty.svg') }}" width='100px' height='100px'>
+				<p class='mt-2 text-muted'>Nothing to display here</p>
+			</div>
+		</div>
 	{% endif %}
 {% endblock %}

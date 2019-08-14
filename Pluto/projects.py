@@ -39,6 +39,12 @@ def view(id, slug):
     project=Project.query.filter((Project.id == id)).first()
     return render_template('projects/view.html', project=project)
 
+@bp.route('')
+@authMiddleware
+def all():
+    projects=Project.query.filter((Project.user_id == session['user_id'])).all()
+    return render_template('projects/all.html', projects=projects)
+
 
 
 def validateProjectInfo(form, files):

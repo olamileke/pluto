@@ -51,4 +51,20 @@ a:hover
 	color:unset;
 }
 
+.null
+{
+	min-height:calc(100vh - 73px)
+}
+
+.null div
+{
+	position:relative;
+	top:20vh;
+}
+
+.null p
+{
+	font-family:'Quicksand', sans-serif;
+}
+
 
