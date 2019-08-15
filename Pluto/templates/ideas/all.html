@@ -1,0 +1,12 @@
+{% extends 'layouts/app.html' %}
+
+{% block title %} Ideas {% endblock %}
+
+{% block body %}
+	
+	{% for idea in ideas %}
+
+		{{ idea.name }}
+	{% endfor %}
+
+{% endblock %}

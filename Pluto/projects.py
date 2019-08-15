@@ -9,7 +9,6 @@ bp = Blueprint('projects', __name__, url_prefix='/projects')
 
 allowedExtensions = ['jpg', 'jpeg', 'png']
 
-
 @bp.route('/new', methods=('GET', 'POST'))
 @authMiddleware
 def new():
@@ -54,10 +53,9 @@ def all():
 @bp.route('/edit/<int:id>', methods=('GET', 'POST'))
 @authMiddleware
 def edit(id):
+    project = Project.query.filter((Project.id == id)).first()
     if request.method == 'POST':
         if validateProjectInfo(request.form, request.files, False):
-            project = Project.query.filter((Project.id == id)).first()
-
             project.name = request.form['name']
             project.about = request.form['about']
             github_link = request.form['github_link']
@@ -73,8 +71,6 @@ def edit(id):
             db.session.commit()
             flash('Project updated!', 'success')
             return redirect(url_for('projects.view', id=id, slug=project.name.lower().replace(' ', '-')))
-
-    project=Project.query.filter((Project.id == id)).first()
 
     # checking if the authenticated user is the project owner
     if project.user_id != session['user_id']:
@@ -94,13 +90,13 @@ def validateProjectInfo(form, files, required):
         return False
 
     if required is True:
-        image=files['image']
+        image = files['image']
 
         if image.filename == '':
             flash('Select an appropriate image', 'error')
             return False
 
-        extension=image.filename.rsplit('.')[1].lower()
+        extension = image.filename.rsplit('.')[1].lower()
 
         if extension not in allowedExtensions:
             flash('File format is not supported', 'error')
@@ -114,8 +110,8 @@ def validateProjectInfo(form, files, required):
 
 
 def uploadImage(image):
-    filename=str(time.time()) + secure_filename(image.filename)
-    UPLOADS_FOLDER=join(
+    filename = str(time.time()) + secure_filename(image.filename)
+    UPLOADS_FOLDER = join(
         current_app.config['BASEDIR'], 'pluto', 'static', 'images', 'Projects')
     image.save(join(UPLOADS_FOLDER, filename))
 

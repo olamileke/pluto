@@ -10,7 +10,7 @@
 
 {% block body %}
 	
-	<div class="ml-5 mr-4 mt-3 py-3 row title-header d-flex row">
+	<div class="ml-3 mr-5 mt-3 py-3 row title-header d-flex row" style='position:relative;'>
 		<div class='col-3'>
 			<img src="{{ g.URL }}/static/images/Projects/{{ project.picture }}">
 		</div>
@@ -21,11 +21,29 @@
 				<div class='loaded bg-success'></div>
 			</div>
 			<div class='d-flex'>
-				<button class='btn btn-primary btn-sm py-2 mr-2' data-target='#newTaskModal' data-toggle="modal"><i class='fa fa-plus mr-2'></i> Add Task</button>
+				<button class='btn btn-primary btn-sm py-2 mr-2' data-target='#newTaskModal' data-toggle="modal">Add Task</button>
 				<a class='btn btn-info btn-sm py-2 mr-2' style='color:#fff;' href="{{ url_for('projects.edit', id=project.id) }}">Edit</a>
 			</div>
 		</div>
+		{% if project.github_link != None %}
+			<p class='link small text-muted'><i class='fa fa-link mr-1'></i> <a href="{{ project.github_link }}" target="new"> Github </a></p>
+		{% endif %}
 	</div>
+
+	<div class='ml-3 mr-5 mt-4 px-2 task-container'>
+		<p class='heading h5 mb-4 text-muted'>Tasks</p>
+		{% for task in project.tasks %}
+
+			<div class="custom-control custom-checkbox ml-1">
+			    <input type="checkbox" class="custom-control-input" id="customControlInline">
+			    <label class="custom-control-label text-muted" for="customControlInline"><p class='m-0 ml-1'>{{ task.name }}</p></label>
+			    <div class='d-flex flex-column pl-1'>
+			    	<p class='m-0 small'>Created {{ task.created_at.strftime("%d/%m/%Y %h:%M") }}</p>
+			    </div>
+			  </div>
+		{% endfor %}
+	</div>
+
 
 	<div class="modal fade" tabindex="-1" role="dialog" id='newTaskModal'>
 		  <div class="modal-dialog" role="document">

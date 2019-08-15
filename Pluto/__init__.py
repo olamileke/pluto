@@ -27,7 +27,7 @@ def create_app(test_config=None):
 	@app.route('/')
 	def index():
 		if 'user_id' in session:
-			projects=models.Project.query.filter((models.Project.user_id==session['user_id']) and (models.Project.is_completed==True)).all()
+			projects=models.Project.query.filter((models.Project.user_id==session['user_id']) & (models.Project.is_completed==False)).all()
 			return render_template('auth_index.html', projects=projects);
 
 		return render_template('index.html')

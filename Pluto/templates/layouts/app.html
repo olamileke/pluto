@@ -43,7 +43,7 @@
 							<a href="{{ url_for('projects.all') }}"><i class="fa fa-tasks mr-2"></i> Projects</a>
 						</li>
 						<li class='py-2 mb-2 d-flex align-items-center  px-3'>
-							<a href=""><i class='fa fa-bolt mr-3'></i> Ideas</a>
+							<a href="{{ url_for('ideas.all') }}"><i class='fa fa-bolt mr-3'></i> Ideas</a>
 						</li>
 					</ul>
 
@@ -58,19 +58,60 @@
 
 				</div>
 				<div class='offset-3'></div>
-				<div class='col-lg-9 d-flex flex-column p-0'>
-					<nav class='py-3 px-4 d-flex justify-content-between'>
-						<a href="{{ url_for('index') }}" class='navbar-brand mr-auto'>Pluto</a>
-						<div class='mr-4 d-flex align-items-center'>
-							<form>
-								<input type="" name="" class='form-control form-control-sm search-input' placeholder='Search'>
-							</form>
+				<div class='col-lg-9 d-flex flex-column p-0 main'>
+					<nav class='py-3 px-4 px-sm-5 px-lg-4 d-flex justify-content-between'>
+						<a href="{{ url_for('index') }}" class='navbar-brand mr-auto ml-2 ml-sm-0'>Pluto</a>
+						<div class='mr-2 mr-sm-0 mr-lg-4 d-flex align-items-center'>
+							<div class='navtoggle d-block active d-lg-none'>
+								<span></span>
+							</div>
+							<input type="" name="" class='form-control form-control-sm search-input d-none d-lg-block' placeholder='Search'>
 						</div>
 					</nav>
 					{% block body %}
 						
 					{% endblock %}
 				</div>
+			</div>
+
+			<div class='responsive-sidebar d-flex flex-column pr-4 active d-lg-none'>
+				<ul class='list-unstyled mr-2 menu text-right text-white mb-2 mb-sm-4'>
+					<li class='mb-4'>
+						{% if g.user.avatar is none %}
+								<img src="{{ g.URL }}/static/images/Users/anon.png" class='mb-2' width='65px' height="65px" style='border-radius:50%'>
+							{% else %}
+
+								<img src="{{ g.URL }}/static/images/Users/{{g.user.avatar}}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>	
+							{% endif %}
+							
+							<p class='mt-2 mb-1'>Hello {{ g.user.name.split(' ')[1] }} !</p>
+							<p class='m-0 dev-name'>{{ g.user.dev_name }}</p>
+					</li>
+					<li class='py-2 mb-3'>
+						<a href="{{ url_for('index') }}">Dashboard</a>
+					</li>
+					<li class='py-2 mb-3'>
+						<a href="{{ url_for('projects.new') }}">New Project</a>
+					</li>
+					<li class='py-2 mb-3'>
+						<a href="{{ url_for('ideas.new') }}">New Idea</a>
+					</li>
+					<li class='py-2 mb-3'>
+						<a href="{{ url_for('projects.all') }}">Projects</a>
+					</li>
+					<li class='py-2 mb-3'>
+						<a href="{{ url_for('ideas.all') }}">Ideas</a>
+					</li>
+				</ul>
+
+				<ul class='list-unstyled text-white text-right'>
+					<li class='py-1 mb-2 mr-2'>
+						<a href="#updateDetailsModal" data-toggle="modal">Update Details</a>
+					</li>
+					<li class='py-2 mb-3 mr-2'>
+						<a href="{{ url_for('auth.logout') }}">Logout</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 

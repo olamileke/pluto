@@ -16,6 +16,36 @@
 	position:fixed;
 }
 
+div.navtoggle
+{
+	position:relative;
+	cursor:pointer;
+	padding:10px 0;
+	width:30px;
+	z-index:9999;
+}
+
+div.navtoggle span, div.navtoggle span:after, div.navtoggle span:before
+{
+	position:absolute;
+	width:100%;
+	height:2px;
+	background:rgba(0,0,0,0.4);
+}
+
+div.navtoggle span:after, div.navtoggle span:before
+{
+	top:-8px;
+	left:0;
+	content: '';
+	background:rgba(0,0,0,0.4);
+}
+
+div.navtoggle span:before
+{
+	top:8px;
+}
+
 
 img
 {
@@ -150,4 +180,82 @@ button.update
 {
 	color:red;
 	font-size:0.8em;
+}
+
+
+.responsive-sidebar
+{
+	position:fixed;
+	top:0;
+	height:100vh;
+	left:100%;
+	width:50%;
+	padding-top:80px;
+	z-index:1;
+	background:rgba(0,0,0,0.5);
+	border-left:1px solid rgba(0,0,0,0.2);
+	transition:left 0.4s ease-in;
+}
+
+.responsive-sidebar.active
+{
+	left:50%;
+}
+
+.responsive-sidebar a
+{
+	color:unset;
+	text-decoration:none;
+	font-family:'Raleway', sans-serif;
+}
+
+.responsive-sidebar li.active a
+{
+	border-bottom:1px solid orange;
+	padding-bottom:5px;
+}
+
+
+@media(max-width:991px)
+{
+	div.navtoggle span, div.navtoggle span:before, div.navtoggle span:after
+	{
+		display:block;
+		transition:all 0.4s ease-in;
+	}
+
+	div.navtoggle.active span
+	{
+		background:none;
+	}
+
+	div.navtoggle.active span:before
+	{
+	    top:0;
+	    transform:rotate(45deg);
+	    background:#fff;
+	}
+
+	div.navtoggle.active span:after
+	{
+		top:0;
+	    transform:rotate(-45deg);
+	    background:#fff;
+	}
+}
+
+
+@media(max-width:576px) 
+{
+	.responsive-sidebar
+	{
+		padding-top:70px;
+		width:70%;
+		/*background:rgba(0,0,0,0.);*/
+	}
+
+	.responsive-sidebar.active
+	{
+		left:30%;
+	}
 }
