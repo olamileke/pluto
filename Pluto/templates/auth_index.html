@@ -23,7 +23,7 @@
 						</div>
 						<div class='px-1'>
 							<p class='project-name m-0 mb-1'>{{ project.name }}</p>
-							<p class='mb-1 info text-muted'>created <em>{{ project.created_at.strftime("%d %B, %Y") }}</em></p>
+							<p class='mb-1 info text-muted'>created {{ project.created_at.strftime('%B %d,%Y %H:%M') }}</p>
 							<p class='info text-muted'><i class='fa fa-check mr-1'></i> {{ project.tasks | length }} completed tasks</p>
 						</div>
 					</a>

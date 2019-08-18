@@ -8,11 +8,11 @@
 
 {% block body %}
 	
-	<div class="px-5 py-3 row">
+	<div class="px-5 py-3 row d-flex justify-content-center justify-content-lg-start">
 	
-		<div class='offset-2'></div>
-			<div class='col-6 d-flex flex-column'>
-				<p class='heading m-0 mb-2'>Add a New Idea</p>
+		<div class='offset-lg-2'></div>
+			<div class='col-sm-10 col-md-8 col-lg-6 d-flex flex-column'>
+				<p class='heading m-0 m-0 mt-1 mt-sm-2 mb-2'>Add a New Idea</p>
 				<span class='text-muted sub-heading mb-4'>* properly define the contours of your next groundbreaking idea</span>
 
 				<form action="{{ url_for('ideas.new') }}" method='POST' class='idea-form'>

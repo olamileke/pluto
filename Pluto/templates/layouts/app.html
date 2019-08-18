@@ -62,7 +62,7 @@
 					<nav class='py-3 px-4 px-sm-5 px-lg-4 d-flex justify-content-between'>
 						<a href="{{ url_for('index') }}" class='navbar-brand mr-auto ml-2 ml-sm-0'>Pluto</a>
 						<div class='mr-2 mr-sm-0 mr-lg-4 d-flex align-items-center'>
-							<div class='navtoggle d-block active d-lg-none'>
+							<div class='navtoggle d-block d-lg-none'>
 								<span></span>
 							</div>
 							<input type="" name="" class='form-control form-control-sm search-input d-none d-lg-block' placeholder='Search'>
@@ -74,7 +74,7 @@
 				</div>
 			</div>
 
-			<div class='responsive-sidebar d-flex flex-column pr-4 active d-lg-none'>
+			<div class='responsive-sidebar d-flex flex-column pr-4 d-lg-none'>
 				<ul class='list-unstyled mr-2 menu text-right text-white mb-2 mb-sm-4'>
 					<li class='mb-4'>
 						{% if g.user.avatar is none %}

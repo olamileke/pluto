@@ -1,4 +1,4 @@
-"""empty message
+"""Created Initial Tables
 
 Revision ID: 0520ec4333db
 Revises: 

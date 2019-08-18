@@ -59,6 +59,7 @@ class Task(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     project_id = db.Column(db.Integer, db.ForeignKey(
         'projects.id'), nullable=False)
+    is_completed=db.Column(db.Boolean, default=0)       
     created_at = db.Column(
         db.DateTime, default=datetime.utcnow, nullable=False)
     completed_at = db.Column(db.DateTime, nullable=True)

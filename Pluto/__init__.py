@@ -7,8 +7,6 @@ from . import ideas
 from . import user
 from . import tasks
 
-migrate=Migrate()
-
 def create_app(test_config=None):
 	app=Flask(__name__)
 	app.config.from_object(os.getenv('APP_SETTINGS'))
@@ -17,6 +15,7 @@ def create_app(test_config=None):
 	from . import models
 
 	models.db.init_app(app)
+	migrate=Migrate()
 	migrate.init_app(app, models.db)
 	app.register_blueprint(auth.bp)
 	app.register_blueprint(projects.bp)

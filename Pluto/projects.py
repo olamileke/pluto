@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, render_template, current_app, session, request, url_for, flash
 from Pluto.middlewares import authMiddleware
-from Pluto.models import Project, db
+from Pluto.models import Project, Task, db
 from werkzeug.utils import secure_filename
 import time
 from os.path import join
@@ -39,7 +39,9 @@ def view(id, slug):
         flash('You do not have access', 'error')
         return redirect(url_for('index'))
 
-    return render_template('projects/view.html', project=project)
+    numCompletedTasks=len(Task.query.filter((Task.project_id==project.id) & (Task.is_completed==True)).all())
+
+    return render_template('projects/view.html', project=project, numCompletedTasks=numCompletedTasks)
 
 
 @bp.route('')
