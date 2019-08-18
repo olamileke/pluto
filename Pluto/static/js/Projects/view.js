@@ -25,19 +25,13 @@ $(document).ready(function() {
 
 	function addTask() {
 
-	return 	$.ajax(`${protocol}//${host}:5000/tasks/add`, {
-				type:'POST',
-				dataType:'text',
-				data:{
-					'task':taskInput.val(),
-					'project_id':id
+	return 	$.ajax(`${protocol}//${host}:5000/tasks/add`, {type:'POST',dataType:'text',data:{'task':taskInput.val(),
+				'project_id':id
 				},
 				error:function(data) {
-
 					toastr.error('Problem adding new task');
 				},
 				success:function(data) {
-
 					if(data == 'success') {
 
 						$(this).find('div').removeClass('d-block').addClass('d-none');
@@ -45,6 +39,7 @@ $(document).ready(function() {
 						taskcontainer.append(newTaskText(taskInput.val()));
 						taskInput.val("");
 						$('#newTaskModal').modal('hide');
+						tasks=$('input[type="checkbox"]');
 					}
 					else {
 
@@ -69,7 +64,7 @@ $(document).ready(function() {
 
 	function newTaskText(task) {
 
-		return `<div class='custom-control custom-checkbox mx-5 mx-sm-0 mb-3 col-sm-6 p-0 pl-1 d-flex flex-column'>
+		return `<div class='custom-control checkbox-parent custom-checkbox mx-5 mx-sm-0 mb-3 col-sm-6 p-0 pl-1 d-flex flex-column'>
 						 <div class="custom-control custom-checkbox my-1 mr-sm-2">
 							<input type="checkbox" class='custom-control-input' id="${task}">
 							<label class="custom-control-label" for="${task}">${task}</label>
@@ -89,26 +84,32 @@ $(document).ready(function() {
 
 	// setting the loader initially when the page loads
 
-	let totalTasks = $('.tasks-count').text();
-	let numCompletedTasks = $('.completed-tasks-count').text();
 	let loadBar = $('.loaded');
 
-	function setLoader(totalTasks, completedTasks) {
+	function setLoader() {
+
+		let totalTasks=$(".checkbox-parent").length
+		let completedTasks=$('.checked').length
 
 		let percent=(completedTasks/totalTasks) * 100;
-		loadBar.css({ width: percent });
+
+		if(percent > 0) {
+			loadBar.css({ width: percent+'%' , border:'1px solid #29AB87'});
+		}
 	}
 
-	setLoader(totalTasks, numCompletedTasks);
+	setLoader();
 
 
-	// getting the checked tasks
 
 	let tasksStatus={};
+	let initialTasksStatus={};
 	let altTaskStatus={};
+	let updatedTasks={};
 	let tasks=$('input[type="checkbox"]');
+	let updatebtn=$('button.update-project');
 
-	function getTaskStatus() {
+	function getTaskStatus(param=false) {
 
 		tasksStatus={};
 		tasks.each(function() {
@@ -124,20 +125,47 @@ $(document).ready(function() {
 			}
 		})
 
-		checkTaskStatus(tasksStatus);
-		alert(JSON.stringify(tasksStatus));
+		if(param) {
+
+			initialTasksStatus=tasksStatus
+		}	
 	}
 
 
-	function checkTaskStatus(tasksObject) {
+	function checkTaskStatus() {
 
-		if(tasks)
+		let keys=Object.keys(initialTasksStatus);
+		updatedTasks={};
+		let count=0;
+
+		for(let i=0; i < keys.length; i++) {
+
+			if(initialTasksStatus[keys[i]] != tasksStatus[keys[i]]) {
+
+				updatedTasks[keys[i]]=tasksStatus[keys[i]]
+				count++;
+			}
+		}
+
+		if(count > 0) {
+
+			updatebtn.show();
+			return false;
+		}
+
+		updatebtn.hide();
+		return true;
 	}
 
-	getTaskStatus();
+
+	// getting the checked tasks
+
+	getTaskStatus(true);
 
 
 	tasks.click(function() {
+
+		const statuses=tasksStatus;
 
 		if($(this).hasClass('checked')) {
 
@@ -148,8 +176,33 @@ $(document).ready(function() {
 			$(this).addClass('checked');
 		}
 
-
 		getTaskStatus();
+		checkTaskStatus();
 	})
+
+
+	// updating the tasks
+
+	updatebtn.click(function() {
+
+		return updateTasks();
+	})
+
+
+	function updateTasks() {
+
+		return 	$.ajax(`${protocol}//${host}:5000/tasks/update`, {type:'POST',dataType:'text',data:{'tasks':JSON.stringify(updatedTasks)},
+			success:function(data) { 
+				initialTasksStatus=tasksStatus;
+				setLoader();
+				toastr.success('Tasks updated!');
+			},
+			error:function(data) {
+				toastr.error('There was a problem updating tasks');
+			}
+		})
+		
+	}
+
 
 })

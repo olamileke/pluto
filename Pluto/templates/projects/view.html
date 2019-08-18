@@ -39,7 +39,7 @@
 			<div class='task-container d-flex row px-3 mb-2'>
 				
 				{% for task in project.tasks %}
-					<div class='custom-control custom-checkbox col-sm-6 mb-3 p-0 d-flex align-items-center align-items-sm-start flex-column mr-1 mr-sm-0'>
+					<div class='custom-control custom-checkbox col-sm-6 mb-3 p-0 d-flex align-items-center align-items-sm-start flex-column mr-1 mr-sm-0 checkbox-parent'>
 						 <div class="custom-control custom-checkbox my-1 mr-sm-2">
 						 	{% if task.is_completed %}
 								<input type="checkbox" class='custom-control-input checked' id="{{ task.name }}" checked>
@@ -53,7 +53,7 @@
 					</div>
 				{% endfor %}
 			</div>
-			<button type='button' style='background:#29AB87;color:#fff; font-size:0.9em;padding-top:6px;padding-bottom:6px; border:1px solid rgba(0,0,0,0.09)'>
+			<button type='button' class='update-project'>
 				Update
   	    	</button>
 		</div>

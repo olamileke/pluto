@@ -27,6 +27,11 @@ button
 	border:1px solid rgba(0,0,0,0.09);
 }
 
+button.update-project
+{
+	display: none;
+}
+
 a
 {
 	color:unset;
@@ -63,9 +68,9 @@ a
 .loaded
 {
 	position:absolute;
-	top:0;
+	top:-1px;
 	left:0;
-	height:100%;
+	height:calc(100% + 1px);
 	width:0%;
 	background:#29AB87;
 	transition:all 0.5s ease-in;
