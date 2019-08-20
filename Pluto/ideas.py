@@ -33,6 +33,11 @@ def all():
 def view(id, slug):
     idea = Idea.query.get(id)
 
+    # making sure that the slug is correct
+    if idea.name.lower().replace(' ', '-') != slug:
+        flash('You do not have access', 'error')
+        return redirect(url_for('index'))
+
     # checking if the creator of the idea is the authenticated user
     if idea.user_id != session['user_id']:
         flash('You do not have access', 'error')
@@ -53,14 +58,14 @@ def edit(id):
 
     if request.method == 'POST':
         if validate(request.form):
-            if idea.name != request.form['name'] and idea.premise != request.form['premise']:
+            if idea.name.replace(' ', '') != request.form['name'].replace(' ', '') and idea.premise.replace(' ', '') != request.form['premise'].replace(' ', ''):
                 saveEdit(db, idea.id, 'Edit name', request.form['name'])
                 saveEdit(db, idea.id, 'Edit premise', request.form['premise'])
 
-            elif idea.name != request.form['name']:
+            elif idea.name.replace(' ', '') != request.form['name'].replace(' ', ''):
                 saveEdit(db, idea.id, 'Edit name', request.form['name'])
 
-            elif idea.premise != request.form['premise']:
+            elif idea.premise.replace(' ', '') != request.form['premise'].replace(' ', ''):
                 saveEdit(db, idea.id, 'Edit premise', request.form['premise'])
 
             idea.name = request.form['name']
@@ -68,11 +73,21 @@ def edit(id):
 
             db.session.commit()
             flash('Idea updated!', 'success')
-            return redirect(url_for('ideas.view', id=idea.id, slug=idea.name.lower().replace(' ','-')))
+            return redirect(url_for('ideas.view', id=idea.id, slug=idea.name.lower().replace(' ', '-')))
         else:
             return render_template('ideas/edit.html', idea=idea)
 
     return render_template('ideas/edit.html', idea=idea)
+
+
+@bp.route('/delete/<int:id>')
+@authMiddleware
+def delete(id):
+    idea=Idea.query.get(id)
+    db.session.delete(idea)
+    db.session.commit()
+    flash('Idea deleted!', 'success')
+    return redirect(url_for('ideas.all'))
 
 
 def saveEdit(db, id, act, res):

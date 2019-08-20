@@ -23,6 +23,12 @@ $(document).ready(function() {
 	})
 
 
+	taskForm.submit(function(e) {
+
+		e.preventDefault();
+	})
+
+
 	function addTask() {
 
 	return 	$.ajax(`${protocol}//${host}:5000/tasks/add`, {type:'POST',dataType:'text',data:{'task':taskInput.val(),

@@ -127,6 +127,11 @@ nav
 	font-family:'Quicksand', sans-serif;
 }
 
+textarea
+{
+	resize:none;
+}
+
 .modal-body label
 {
 	font-size:0.9em;

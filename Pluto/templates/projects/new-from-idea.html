@@ -1,0 +1,55 @@
+{% extends 'layouts/app.html' %}
+
+{% block title %} New Project {% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Projects/new.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+<div class="px-5 py-3 row d-flex justify-content-center justify-content-lg-start">
+	
+	<div class='offset-lg-2'></div>
+	<div class='col-sm-10 col-md-8 col-lg-6 d-flex flex-column'>
+		<p class='heading m-0 mt-1 mt-sm-2 mt-lg-0 mb-2'>Create a New Project</p>
+		<span class='text-muted sub-heading mb-4'>* setup your project with required information</span>
+
+		<form method='POST' action="{{ url_for('projects.fromIdea', id=idea.id) }}" class='project-form' enctype='multipart/form-data'>
+			<div class='form-group'>
+				<label for='name' class='text-muted'>Name</label>
+				<input type="text" name="name" id='name' value='{{ idea.name }}' class='form-control form-control-sm elements'>
+				<p class='text-muted m-0 mt-2 sub-text'>explore the whole gamut here, be creative</p>
+			</div>
+			<div class='form-group'>
+				<div class='d-flex align-items-end img-container'>
+					<div class='image-parent mr-3' style='position:relative;'>
+						<img src="#" class='project-img'>
+					</div>
+					<input type="file" name="image" id='fileInput' style='display:none'>
+					<button style='background:#EDFAFD;' class='px-2 upload' type='button'>Add Image</button>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label for='about' class='text-muted'>About</label>
+				<textarea class='form-control elements' name='about' rows='4' id='about'>{{ idea.premise }}</textarea>
+				<p class='text-muted m-0 mt-2 sub-text'>a short description of the project</p>
+			</div>
+			<div class='form-group'>
+				<label for='link' class='text-muted'>github repo (optional)</label>
+				<input type="text" name="github_link" class='form-control form-control-sm'>
+			</div>
+			<div class='form-group'>
+				<button type='submit' class='create px-2 py-2'>Create Project</button>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+	
+	<script type="text/javascript" src="{{ url_for('static', filename='js/Projects/new.js') }}"></script>
+{% endblock %}
