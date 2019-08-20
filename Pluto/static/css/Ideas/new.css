@@ -18,6 +18,11 @@ form
 	font-family:'Quicksand', sans-serif;
 }
 
+.form-control
+{
+	font-size:0.9em !important;
+}
+
 .sub-text
 {
 	font-size:0.9em;

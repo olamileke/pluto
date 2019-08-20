@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, url_for, request, session, flash, render_template
-from Pluto.models import Idea, db
+from Pluto.models import Idea, db, EditIdea
 from Pluto.middlewares import authMiddleware
 
 bp = Blueprint('ideas', __name__, url_prefix='/ideas')
@@ -21,10 +21,64 @@ def new():
 
 
 @bp.route('')
+@authMiddleware
 def all():
-	ideas=Idea.query.filter((Idea.user_id == session['user_id'])).all()
+    ideas = Idea.query.filter((Idea.user_id == session['user_id'])).all()
 
-	return render_template('ideas/all.html', ideas=ideas)
+    return render_template('ideas/all.html', ideas=ideas)
+
+
+@bp.route('/<int:id>/<slug>')
+@authMiddleware
+def view(id, slug):
+    idea = Idea.query.get(id)
+
+    # checking if the creator of the idea is the authenticated user
+    if idea.user_id != session['user_id']:
+        flash('You do not have access', 'error')
+        return redirect(url_for('index'))
+
+    return render_template('ideas/view.html', idea=idea)
+
+
+@bp.route('/edit/<int:id>', methods=['GET', 'POST'])
+@authMiddleware
+def edit(id):
+    idea = Idea.query.get(id)
+
+    # checking if the creator of the idea is the authenticated user
+    if idea.user_id != session['user_id']:
+        flash('You do not have access', 'error')
+        return redirect(url_for('index'))
+
+    if request.method == 'POST':
+        if validate(request.form):
+            if idea.name != request.form['name'] and idea.premise != request.form['premise']:
+                saveEdit(db, idea.id, 'Edit name', request.form['name'])
+                saveEdit(db, idea.id, 'Edit premise', request.form['premise'])
+
+            elif idea.name != request.form['name']:
+                saveEdit(db, idea.id, 'Edit name', request.form['name'])
+
+            elif idea.premise != request.form['premise']:
+                saveEdit(db, idea.id, 'Edit premise', request.form['premise'])
+
+            idea.name = request.form['name']
+            idea.premise = request.form['premise']
+
+            db.session.commit()
+            flash('Idea updated!', 'success')
+            return redirect(url_for('ideas.view', id=idea.id, slug=idea.name.lower().replace(' ','-')))
+        else:
+            return render_template('ideas/edit.html', idea=idea)
+
+    return render_template('ideas/edit.html', idea=idea)
+
+
+def saveEdit(db, id, act, res):
+    edit = EditIdea(idea_id=id, action=act, result=res)
+    db.session.add(edit)
+    db.session.commit()
 
 
 def validate(form):

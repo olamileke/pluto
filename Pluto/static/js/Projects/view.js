@@ -98,9 +98,7 @@ $(document).ready(function() {
 		}
 	}
 
-	setLoader();
-
-
+	setLoader(); 
 
 	let tasksStatus={};
 	let initialTasksStatus={};
@@ -149,11 +147,11 @@ $(document).ready(function() {
 
 		if(count > 0) {
 
-			updatebtn.show();
+			updatebtn.addClass('d-flex');
 			return false;
 		}
 
-		updatebtn.hide();
+		updatebtn.removeClass('d-flex');
 		return true;
 	}
 
@@ -185,23 +183,36 @@ $(document).ready(function() {
 
 	updatebtn.click(function() {
 
-		return updateTasks();
+		$(this).addClass('active');
+		$(this).find('p').hide()
+		$(this).find('div').show();
+		updateTasks($(this));		
 	})
 
 
-	function updateTasks() {
+	function updateTasks(button) {
 
 		return 	$.ajax(`${protocol}//${host}:5000/tasks/update`, {type:'POST',dataType:'text',data:{'tasks':JSON.stringify(updatedTasks)},
 			success:function(data) { 
 				initialTasksStatus=tasksStatus;
 				setLoader();
 				toastr.success('Tasks updated!');
+				resetButton(button);
 			},
 			error:function(data) {
 				toastr.error('There was a problem updating tasks');
-			}
+				resetButton(button);
+			},
 		})
 		
+	}
+
+
+	function resetButton(button) {
+
+		button.removeClass('active').removeClass('d-flex');
+		button.find('p').show();
+		button.find('div').hide();
 	}
 
 

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Livvic&display=swap');
 
 *
 {
@@ -16,8 +17,21 @@
 	object-fit:cover;
 }
 
+p.about
+{
+	font-family:'Livvic', sans-serif;
+	color:rgba(0,0,0,0.55);
+}
+
+.title-header a
+{
+	font-family:'Livvic', sans-serif;
+	color:rgba(0,0,0,0.55);
+}
+
 button
 {
+	position:relative;
 	outline:0;
 	border-radius:4px;
 	background:#29AB87;color:#fff; 
@@ -25,11 +39,19 @@ button
 	padding-top:6px;
 	padding-bottom:6px;
 	border:1px solid rgba(0,0,0,0.09);
+	cursor: pointer;
 }
 
 button.update-project
 {
 	display: none;
+}
+
+button.update-project.active
+{
+	width:64px;
+	justify-content: center;
+	align-items: center;
 }
 
 a
@@ -57,9 +79,9 @@ a
 .loader
 {
 	position:relative;
-	top:-5px;
+	/*top:-5px;*/
 	border-radius:2px;
-	padding:7px 0;
+	padding:6px 0;
 	border:1px solid rgba(0,0,0,0.05);
 	width:80%;
 	background:transparent;
@@ -73,11 +95,12 @@ a
 	height:calc(100% + 1px);
 	width:0%;
 	background:#29AB87;
-	transition:all 0.5s ease-in;
+	transition:all 0.5s ease-out;
 }
 
 button .loader
 {
+	display:none;
 	width:15px;
 	height:15px;
 	border-radius:50%;

@@ -1,0 +1,36 @@
+
+*
+{
+	font-family:'Quicksand', sans-serif;
+}
+
+.premise
+{
+	position:relative;
+	top:6px;
+}
+
+a
+{
+	color:unset;
+	text-decoration:none;
+}
+
+a:hover
+{
+	text-decoration: none;
+}
+
+.buttons
+{
+	position:relative;
+	top:9px;
+	font-size:0.9em;
+}
+
+.created-at
+{
+	position:relative;
+	top:10px;
+	font-size:0.9em;
+}

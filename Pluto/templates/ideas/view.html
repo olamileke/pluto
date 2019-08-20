@@ -1,0 +1,41 @@
+{% extends 'layouts/app.html' %}
+
+{% block title %} {{ idea.name }} {% endblock %}
+
+{% block css %} 
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Ideas/view.css') }}">
+ {% endblock %}
+
+{% block body %}
+	
+	<div class="ml-sm-4 mr-sm-5 mt-3 pt-3 row title-header">
+		<div class='col-8'>
+			<p class='header h5'>{{ idea.name }}</p>
+			<p class='premise text-muted mb-1'>{{ idea.premise }}</p>
+			<div class='d-flex buttons mb-1'>
+				<a href="{{ url_for('ideas.edit', id=idea.id) }}" class='mr-2 text-muted'>Edit Idea</a>
+				<a href="#" class='text-muted mr-2'>Delete</a>
+				<a href="#" class='text-muted'>Work on</a>
+			</div>
+			<p class='text-muted created-at'>Created {{ idea.created_at.strftime('%B %d,%Y %H:%M') }}</p>
+		</div>
+	</div>
+
+	<div class='ml-sm-4 mr-sm-5 mt-3 row d-flex flex-column'>
+		
+		<div class='ml-3 mb-3'>{{ idea.edits | length}} Edits</div>
+		<div class='col-8'>
+			{% for edit in idea.edits %}
+				<div class='edit d-flex flex-column mb-2 '>
+					{% if edit.action == 'Edit name' %}
+
+						<p>You edited idea name on {{ edit.created_at.strftime('%B %d,%Y %H:%M') }}</p>
+					{% else %}
+
+						<p>You edited idea premise on {{ edit.created_at.strftime('%B %d,%Y %H:%M') }}</p>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

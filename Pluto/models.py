@@ -3,6 +3,7 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
+
 class User(db.Model):
     __tablename__ = 'users'
 
@@ -49,6 +50,8 @@ class Idea(db.Model):
     premise = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
+    edits = db.relationship('EditIdea', cascade='all, delete-orphan',
+                            backref=db.backref('Idea', lazy=True), lazy=True)
 
 
 class Task(db.Model):
@@ -59,7 +62,18 @@ class Task(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     project_id = db.Column(db.Integer, db.ForeignKey(
         'projects.id'), nullable=False)
-    is_completed=db.Column(db.Boolean, default=0)       
+    is_completed = db.Column(db.Boolean, default=0)
     created_at = db.Column(
         db.DateTime, default=datetime.utcnow, nullable=False)
     completed_at = db.Column(db.DateTime, nullable=True)
+
+
+class EditIdea(db.Model):
+    __tablename__ = 'edit_ideas'
+
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    idea_id = db.Column(db.Integer, db.ForeignKey('ideas.id'), nullable=False)
+    action = db.Column(db.String(20), nullable=False)
+    result = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.utcnow)
