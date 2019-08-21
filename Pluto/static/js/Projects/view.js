@@ -38,14 +38,17 @@ $(document).ready(function() {
 					toastr.error('Problem adding new task');
 				},
 				success:function(data) {
-					if(data == 'success') {
+					if(data != 'error') {
 
 						$(this).find('div').removeClass('d-block').addClass('d-none');
 						toastr.success('New Task Added');
-						taskcontainer.append(newTaskText(taskInput.val()));
+						taskcontainer.append(newTaskText(taskInput.val(), data));
 						taskInput.val("");
 						$('#newTaskModal').modal('hide');
 						tasks=$('input[type="checkbox"]');
+						taskIDs=$('.task-id'); 
+						tasks.off();
+						taskClick();
 					}
 					else {
 
@@ -68,11 +71,15 @@ $(document).ready(function() {
 	}
 
 
-	function newTaskText(task) {
+	function newTaskText(task, id) {
 
-		return `<div class='custom-control checkbox-parent custom-checkbox mx-5 mx-sm-0 mb-3 col-sm-6 p-0 pl-1 d-flex flex-column'>
+		initialTasksStatus[id]=0;
+		tasksStatus[id]=0;
+
+		return `<div class='custom-control custom-checkbox col-sm-6 mb-1 p-0 d-flex align-items-center align-items-sm-start flex-column mr-1 mr-sm-0 checkbox-parent'>
 						 <div class="custom-control custom-checkbox my-1 mr-sm-2">
 							<input type="checkbox" class='custom-control-input' id="${task}">
+							<span class='task-id' hidden>${id}</span>
 							<label class="custom-control-label" for="${task}">${task}</label>
 						</div>
 						<p class='m-0 ml-4 small text-muted'>Created ${getTime()}</p>
@@ -100,7 +107,12 @@ $(document).ready(function() {
 		let percent=(completedTasks/totalTasks) * 100;
 
 		if(percent > 0) {
+
 			loadBar.css({ width: percent+'%' , border:'1px solid #29AB87'});
+		}
+		else if(percent == 0) {
+
+			loadBar.css({ width: percent+'%', border:'0px solid transparent'});
 		}
 	}
 
@@ -108,9 +120,9 @@ $(document).ready(function() {
 
 	let tasksStatus={};
 	let initialTasksStatus={};
-	let altTaskStatus={};
 	let updatedTasks={};
-	let tasks=$('input[type="checkbox"]');
+	var tasks=$('input[type="checkbox"]');
+	var taskIDs=$('.task-id'); 
 	let updatebtn=$('button.update-project');
 
 	function getTaskStatus(param=false) {
@@ -118,7 +130,7 @@ $(document).ready(function() {
 		tasksStatus={};
 		tasks.each(function() {
 
-			let id=$(this).next().text();
+			let id=$(this).parent().find('.task-id').text();
 			if($(this).hasClass('checked')) {
 
 				tasksStatus[id]=1;
@@ -167,23 +179,28 @@ $(document).ready(function() {
 	getTaskStatus(true);
 
 
-	tasks.click(function() {
+	function taskClick() {
 
-		const statuses=tasksStatus;
+		tasks.click(function() {
 
-		if($(this).hasClass('checked')) {
+			const statuses=tasksStatus;
 
-			$(this).removeClass('checked');
-		}
-		else {
+			if($(this).hasClass('checked')) {
 
-			$(this).addClass('checked');
-		}
+				$(this).removeClass('checked');
+			}
+			else {
 
-		getTaskStatus();
-		checkTaskStatus();
-	})
+				$(this).addClass('checked');
+			}
 
+			getTaskStatus();
+			checkTaskStatus();
+		})
+
+	}
+
+	taskClick();
 
 	// updating the tasks
 
@@ -204,13 +221,39 @@ $(document).ready(function() {
 				setLoader();
 				toastr.success('Tasks updated!');
 				resetButton(button);
+				updateTaskDetails()
 			},
 			error:function(data) {
 				toastr.error('There was a problem updating tasks');
-				resetButton(button);
 			},
 		})
 		
+	}
+
+
+	// setting the completed at details for just updated tasks
+
+	function updateTaskDetails() {
+
+		let updatedIDs=Object.keys(updatedTasks);
+
+		taskIDs.each(function() {
+
+			let $this=$(this);
+
+			if(updatedIDs.indexOf($this.text()) != -1) {
+
+				let parent=$(this).parent().parent();
+
+				if(updatedTasks[$this.text()]) {
+
+					parent.find('.completed-at').css('visibility','visible').text('Completed ' + getTime());
+				}
+				else {
+					parent.find('.completed-at').css('visibility','hidden');
+				}
+			}
+		})
 	}
 
 

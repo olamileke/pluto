@@ -144,4 +144,9 @@ label p
 		left:10%;
 		width:80%;
 	}
+
+	button.update-project
+	{
+		left: calc((100% - 63px)/2);
+	}
 }
