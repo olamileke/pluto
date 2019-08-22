@@ -91,7 +91,14 @@ $(document).ready(function() {
 
 		let date=new Date();
 
-		return `${months[date.getMonth()]} ${ date.getDate()}, ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+		let minutes=String(date.getMinutes());
+
+		if(String(date.getMinutes()).length == 1) {
+
+			minutes='0'+String(date.getMinutes());
+		}
+
+		return `${months[date.getMonth()]} ${ date.getDate()}, ${date.getFullYear()} ${date.getHours()}:${minutes}`;
 	}
 
 

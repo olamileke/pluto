@@ -8,40 +8,45 @@
 
 {% block body %}
 	
-	<div class="ml-sm-4 mr-sm-5 mt-3 pt-3 row title-header">
-		<div class='col-lg-8 px-5 px-sm-0'>
-			<p class='header h5'>{{ idea.name }}</p>
-			<p class='premise text-muted mb-1'>{{ idea.premise }}</p>
-			<div class='d-flex buttons mb-1'>
-				<a href="{{ url_for('ideas.edit', id=idea.id) }}" class='mr-2 text-muted'>Edit Idea</a>
-				<a href="{{ url_for('ideas.delete', id=idea.id) }}" class='text-muted mr-2 delete'>Delete</a>
-				<a href="{{ url_for('projects.fromIdea', id=idea.id) }}" class='text-muted'>Work on</a>
-			</div>
-			<p class='text-muted created-at'>Created {{ idea.created_at.strftime('%B %d,%Y') }}</p>
-		</div>
-	</div>
-
-	<div class='ml-sm-4 mr-sm-5 mt-3 row d-flex flex-column px-5 px-sm-0'>
-		
-		<div class='mb-3'>{{ idea.edits | length}} Edits</div>
-		<div class='col-lg-8 p-0'>
-			{% for edit in idea.edits %}
-				<div class='edit d-flex flex-column mb-4 pl-3 '>
-					<p class='mb-2 edited-at' style='font-size:0.95em'>Edit on {{ edit.created_at.strftime('%B %d,%Y %H:%m') }}</p>
-					{% if edit.action == 'Edit name' %}
-
-						<div class='text-muted' style='font-size:0.95em'>
-							changed name to <em>"{{ edit.result }}"</em>
-						</div>
-					{% else %}
-
-						<div class='text-muted' style='font-size:0.95em'>
-							changed premise to <em>"{{ edit.result }}"</em>
-						</div>
-
-					{% endif %}
+	<div class='row'>
+		<div class='offset-lg-1'></div>
+		<div class='col-lg-8 px-5 px-lg-0'>
+			<div class="ml-sm-4 mr-sm-5 mt-3 mb-4 pt-3  title-header">
+				<div>
+					<p class='header h5'>{{ idea.name }}</p>
+					<p class='premise text-muted mb-1'>{{ idea.premise }}</p>
+					<div class='d-flex buttons mb-2'>
+						<a href="{{ url_for('ideas.edit', id=idea.id) }}" class='mr-2 text-muted'>Edit Idea</a>
+						<a href="{{ url_for('ideas.delete', id=idea.id) }}" class='text-muted mr-2 delete'>Delete</a>
+						<a href="{{ url_for('projects.fromIdea', id=idea.id) }}" class='text-muted'>Work on</a>
+					</div>
+					<p class='text-muted created-at'>Created {{ idea.created_at.strftime('%B %d,%Y') }}</p>
 				</div>
-			{% endfor %}
+			</div>
+
+			<div class='ml-sm-4 mr-sm-5 mt-4 p1-2 d-flex flex-column'>
+				
+				<div class='mb-3'>{{ idea.edits | length}} Edits</div>
+				<div class='p-0'>
+					{% for edit in idea.edits %}
+						<div class='edit d-flex flex-column mb-4 pl-3 '>
+							<p class='mb-2 edited-at' style='font-size:0.95em'>Edit on {{ edit.created_at.strftime('%B %d,%Y %H:%m') }}</p>
+							{% if edit.action == 'Edit name' %}
+
+								<div class='text-muted' style='font-size:0.95em'>
+									changed name to <em>"{{ edit.result }}"</em>
+								</div>
+							{% else %}
+
+								<div class='text-muted' style='font-size:0.95em'>
+									changed premise to <em>"{{ edit.result }}"</em>
+								</div>
+
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
 		</div>
 	</div>
 {% endblock %}

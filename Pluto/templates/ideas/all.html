@@ -12,9 +12,16 @@
 	<div class='px-5 mt-4'>
 		<div class='row ideas-container'>
 			{% for idea in ideas %}
-				<a href="" class='col-sm-3 no-gutters mr-3 py-3 d-flex flex-column align-items-center'>
-					<p class='m-0 mb-2'>{{ idea.name }}</p>
-					<p class='text-muted px-3 text-center premise'>{{ idea.premise }}</p>
+				<a href="{{ url_for('ideas.view', id=idea.id, slug=idea.name.lower().replace(' ','-')) }}" class='col-sm-4 no-gutters py-3 d-flex flex-column'>
+					<div style='position:relative; height:150px;width:100%;' class='mb-2 px-3 d-flex align-items-end'>
+						<p class='name text-muted'>{{ idea.name.lower() }}</p>
+						<div style='position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.05)'></div>
+					</div>
+					<div class='px-1'>
+						<p class='m-0 mb-1'>{{ idea.premise[:70] }}...</p>
+						<p class='mb-1 info'>{{ idea.edits | length }} edits</p>
+						<p class='info text-muted'></p>
+					</div>
 				</a>				
 			{% endfor %}
 		</div>

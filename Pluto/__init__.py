@@ -1,11 +1,12 @@
 import os
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, request
 from flask_migrate import Migrate
 from . import auth
 from . import projects
 from . import ideas
 from . import user
 from . import tasks
+from .middlewares import authMiddleware
 
 
 def create_app(test_config=None):
@@ -33,5 +34,17 @@ def create_app(test_config=None):
             return render_template('auth_index.html', projects=projects)
 
         return render_template('index.html')
+
+    @app.route('/search')
+    @authMiddleware
+    def search():
+        term=request.args.get('term')
+        search="%{}%".format(term)
+
+        projects=models.Project.query.filter((models.Project.name.ilike(search)) | (models.Project.about.ilike(search))).all()
+        ideas=models.Idea.query.filter((models.Idea.name.ilike(search)) | (models.Idea.premise.ilike(search))).all()
+        length=len(projects) + len(ideas)
+
+        return render_template('search.html', term=term, projects=projects, ideas=ideas, length=length)
 
     return app

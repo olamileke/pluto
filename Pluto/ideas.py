@@ -15,7 +15,7 @@ def new():
             db.session.add(idea)
             db.session.commit()
             flash('Idea added successfully', 'success')
-            return redirect(url_for('ideas.new'))
+            return redirect(url_for('ideas.view', id=idea.id, slug=idea.name.lower().replace(' ','-')))
 
     return render_template('ideas/new.html')
 

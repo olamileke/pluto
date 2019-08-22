@@ -65,7 +65,9 @@
 							<div class='navtoggle d-block d-lg-none'>
 								<span></span>
 							</div>
-							<input type="" name="" class='form-control form-control-sm search-input d-none d-lg-block' placeholder='Search'>
+							<form method='GET' action='{{ url_for("search") }}'>
+								<input type="search" name="term" class='form-control form-control-sm search-input d-none d-lg-block' placeholder='Search'>
+							</form>
 						</div>
 					</nav>
 					{% block body %}
@@ -144,7 +146,7 @@
 		      				<div class='image-parent mr-3'>
 		      					<img src="#">
 		      				</div>
-		      				<button style='background:#EDFAFD;outline:none;border:1px solid rgba(0,0,0,0.06); font-size:0.8em;border-radius:4px;padding-top:5px; padding-bottom:5px;' type='button' class='upload'>Change Avatar</button>
+		      				<button style='background:#EDFAFD;outline:none;border:1px solid rgba(0,0,0,0.06); font-size:0.8em;border-radius:4px;padding-top:5px; padding-bottom:5px;color:#000' type='button' class='upload'>Change Avatar</button>
 		      				<input type="file" class='file-input' name="image" style='display:none'>
 		      			</div>
 		      		</div>
