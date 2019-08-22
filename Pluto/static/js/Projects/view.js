@@ -10,6 +10,7 @@ $(document).ready(function() {
 	let taskInput=taskForm.find('input');
 	let months=['January', 'February', 'March', 'April', 'May','June', 'July', 'August', 'September', 'October', 'November', 'December'];
 	let taskcontainer=$('.task-container');
+	let completebtn=$('a.complete');
 
 	taskBtn.click(function() {
 
@@ -207,7 +208,10 @@ $(document).ready(function() {
 
 	}
 
-	taskClick();
+	if(!completebtn.hasClass('completed')) {
+
+		taskClick();
+	}
 
 	// updating the tasks
 
@@ -272,4 +276,38 @@ $(document).ready(function() {
 	}
 
 
+	// deleting a project
+
+	let deletebtn=$('a.delete');
+
+	deletebtn.click(function(e) {
+
+		let param=confirm('Are you sure you want to delete ?')
+
+		if(!param) {
+
+			e.preventDefault();
+		}
+	})
+
+
+	// toggling the completed state of a project
+
+	completebtn.click(function(e) {
+
+		if($(this).hasClass('completed')) {
+			
+			let param=confirm('Work on Project ?');
+		}
+		else {
+
+			let param=confirm('Complete Project ?');
+		}
+
+
+		if(!param) {
+
+			e.preventDefault();
+		}
+	})
 })

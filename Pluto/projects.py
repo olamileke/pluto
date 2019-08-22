@@ -39,7 +39,7 @@ def fromIdea(id):
     idea = Idea.query.get(id)
     if request.method == 'POST':
         if validateProjectInfo(request.form, request.files, True):
-            edits=EditIdea.query.filter((EditIdea.idea_id == id)).all()
+            edits = EditIdea.query.filter((EditIdea.idea_id == id)).all()
             for edit in edits:
                 db.session.delete(edit)
 
@@ -106,6 +106,38 @@ def edit(id):
         return redirect(url_for('index'))
 
     return render_template('projects/edit.html', project=project)
+
+
+@bp.route('/delete/<int:id>')
+@authMiddleware
+def delete(id):
+    project = Project.query.get(id)
+    tasks = Task.query.filter((Task.project_id == project.id)).all()
+
+    for task in tasks:
+        db.session.delete(task)
+
+    db.session.delete(project)
+    db.session.commit()
+    flash('Project deleted!', 'success')
+
+    return redirect(url_for('projects.all'))
+
+
+@bp.route('/complete/<int:id>')
+@authMiddleware
+def complete(id):
+    project = Project.query.get(id)
+
+    if project.is_completed:
+        project.is_completed = False
+    else:
+        project.is_completed = True
+
+    db.session.commit()
+    flash('Project updated!', 'success')
+
+    return redirect(url_for('projects.view', id=project.id, slug=project.name.lower().replace(' ','-')))
 
 
 def validateProjectInfo(form, files, required):

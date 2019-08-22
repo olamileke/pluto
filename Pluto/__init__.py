@@ -41,8 +41,8 @@ def create_app(test_config=None):
         term=request.args.get('term')
         search="%{}%".format(term)
 
-        projects=models.Project.query.filter((models.Project.name.ilike(search)) | (models.Project.about.ilike(search))).all()
-        ideas=models.Idea.query.filter((models.Idea.name.ilike(search)) | (models.Idea.premise.ilike(search))).all()
+        projects=models.Project.query.filter(((models.Project.name.ilike(search)) | (models.Project.about.ilike(search))) & (models.Project.user_id == session['user_id'])).all()
+        ideas=models.Idea.query.filter(((models.Idea.name.ilike(search)) | (models.Idea.premise.ilike(search))) & (models.Idea.user_id == session['user_id'])).all()
         length=len(projects) + len(ideas)
 
         return render_template('search.html', term=term, projects=projects, ideas=ideas, length=length)
