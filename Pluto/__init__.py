@@ -7,12 +7,14 @@ from . import ideas
 from . import user
 from . import tasks
 from .middlewares import authMiddleware
+from datetime import timedelta
 
 
 def create_app(test_config=None):
     app = Flask(__name__)
     app.config.from_object(os.getenv('APP_SETTINGS'))
-    app.config['SQLALCHEMY_DATABASE_URI']="postgresql://postgres:Arsenalfc@localhost:5432/pluto"
+    # app.config['SQLALCHEMY_DATABASE_URI']="postgresql://postgres:Arsenalfc@localhost:5432/pluto"
+    app.config['PERMANENT_SESSION_LIFETIME']=timedelta(days=14)
     app.secret_key = os.urandom(16)
 
     from . import models
@@ -25,6 +27,10 @@ def create_app(test_config=None):
     app.register_blueprint(ideas.bp)
     app.register_blueprint(user.bp)
     app.register_blueprint(tasks.bp)
+
+    @app.before_request
+    def setPermanentSession():
+        session.permanent=True
 
     @app.route('/')
     def index():

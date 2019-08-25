@@ -23,3 +23,20 @@
 	font-size:1.1em;
 	transition:all 0.8s ease-out;
 }
+
+.no-idea
+{
+	min-height:calc(100vh - 73px)
+}
+
+.no-idea div
+{
+	position:relative;
+	top:23.5vh;
+}
+
+.no-idea p
+{
+	font-family:'Quicksand', sans-serif;
+	font-size:1.15em;
+}

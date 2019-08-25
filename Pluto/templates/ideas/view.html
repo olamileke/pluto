@@ -29,7 +29,7 @@
 				<div class='mb-3'>{{ idea.edits | length}} Edits</div>
 				<div class='p-0'>
 					{% for edit in idea.edits %}
-						<div class='edit d-flex flex-column mb-4 pl-3 '>
+						<div class='edit d-flex flex-column mb-4'>
 							<p class='mb-2 edited-at' style='font-size:0.95em'>Edit on {{ edit.created_at.strftime('%B %d,%Y %H:%m') }}</p>
 							{% if edit.action == 'Edit name' %}
 

@@ -9,12 +9,14 @@
 
 {% block body %} 
 	<div class='px-5 mt-4 d-flex flex-column'>
-		<p class='heading h5 mb-4'>{{ length }} Combined Search Results for "{{ term }}"</p>
+		<p class='heading h5 mb-4 mt-2'>{{ length }} Combined Search Results for "{{ term }}"</p>
 
-		<div class='d-flex tabs mb-3'>
-			<a href="#" class='mr-3 h5 active pb-1'>Projects</a>
-			<a href="#" class='h5 text-muted '>Ideas</a>
-		</div>
+		{% if length > 0 %}
+			<div class='d-flex tabs mb-3'>
+				<a href="#" class='mr-3 h5 active pb-1'>Projects</a>
+				<a href="#" class='h5 text-muted '>Ideas</a>
+			</div>
+		{% endif %}
 
 		<div class='row projects-container d-flex'>
 			{% for project in projects %}

@@ -201,6 +201,41 @@ div.overlay
 	font-family:'Raleway', sans-serif;
 }
 
+div.navtoggle
+{
+	position:relative;
+	cursor:pointer;
+	padding:10px 0;
+	width:30px;
+	z-index:9999;
+}
+
+.navbar-toggler
+{
+	outline:0;
+}
+
+div.navtoggle span, div.navtoggle span:after, div.navtoggle span:before
+{
+	position:absolute;
+	width:100%;
+	height:1px;
+	background:#fff;
+}
+
+div.navtoggle span:after, div.navtoggle span:before
+{
+	top:-8px;
+	left:0;
+	content: '';
+	background:#fff;
+}
+
+div.navtoggle span:before
+{
+	top:8px;
+}
+
 
 @media(max-width:991px)
 {

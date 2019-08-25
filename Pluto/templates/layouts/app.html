@@ -5,6 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/toastr.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='js/Material/material-scrolltop.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Layouts/app.css') }}">
 		{% block css %} {% endblock %}
 
@@ -59,7 +60,7 @@
 				</div>
 				<div class='offset-3'></div>
 				<div class='col-lg-9 d-flex flex-column p-0 main'>
-					<nav class='py-3 px-4 px-sm-5 px-lg-4 d-flex justify-content-between'>
+					<nav class='py-3 px-4 px-sm-5 px-lg-4 w-100 d-flex justify-content-between'>
 						<a href="{{ url_for('index') }}" class='navbar-brand mr-auto ml-2 ml-sm-0'>Pluto</a>
 						<div class='mr-2 mr-sm-0 mr-lg-4 d-flex align-items-center'>
 							<div class='navtoggle d-block d-lg-none'>
@@ -118,6 +119,9 @@
 			</div>
 		</div>
 
+		<button class="material-scrolltop d-block d-sm-none" type="button"></button>
+
+
 		<div class="modal fade" tabindex="-1" role="dialog" id='updateDetailsModal'>
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
@@ -169,7 +173,8 @@
 		<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/Layouts/app.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/Layouts/update.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/toastr.min.js') }}"></script>		
+		<script type="text/javascript" src="{{ url_for('static', filename='js/Material/material-scrolltop.js') }}"></script>		
+		<script type="text/javascript" src="{{ url_for('static', filename='js/toastr.min.js') }}"></script>
 		<script type="text/javascript">
 			
 			{% for category, message in get_flashed_messages(with_categories=true) %}

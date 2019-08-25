@@ -4,13 +4,14 @@ $(document).ready(function() {
 
 	let host=location.hostname;
 	let protocol=location.protocol;
-	let id=location.pathname.slice(10,11);
+	let id=$('.project-id').text();
 	let taskForm=$('.task-form');
 	let taskBtn=taskForm.find('button');
 	let taskInput=taskForm.find('input');
 	let months=['January', 'February', 'March', 'April', 'May','June', 'July', 'August', 'September', 'October', 'November', 'December'];
 	let taskcontainer=$('.task-container');
 	let completebtn=$('a.complete');
+
 
 	taskBtn.click(function() {
 

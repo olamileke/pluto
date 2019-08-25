@@ -4,6 +4,7 @@
 		<title>Pluto</title>
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Home/index.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='js/Material/material-scrolltop.css') }}">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	</head>
@@ -13,8 +14,10 @@
 				<nav class='navbar navbar-expand-sm navbar-light py-2 pr-2 px-sm-4 px-lg-5'>
 					<a href="{{ url_for('index') }}" class='navbar-brand'>Pluto</a>
 
-					<button class='navbar-toggler mt-2' type='button' data-toggle='collapse' data-target="#navbarSupportedContent">
-						<span class='navbar-toggler-icon'></span>
+					<button class='navbar-toggler mt-2 mr-2' type='button' data-toggle='collapse' data-target="#navbarSupportedContent">
+						<div class='navtoggle'>
+							<span></span>
+						</div>
 					</button>
 
 					<div class='collapse navbar-collapse' id='navbarSupportedContent'>
@@ -43,7 +46,7 @@
 
 				<div class='row py-lg-4 px-1 px-lg-5 m-0 d-flex align-items-center justify-content-lg-center  align-items-lg-start landing-page' style='overflow-x:hidden'>
 					<div class='col-0 col-sm-1 d-lg-none'></div>
-					<div class='text-center brand-parent text-sm-left col-sm-9 col-lg-6 col-xl-5 d-flex py-4 flex-column align-items-center align-items-sm-start'>
+					<div class='text-center brand-parent text-sm-left col-sm-9 col-lg-6 col-xl-5 d-flex py-sm-4 flex-column align-items-center align-items-sm-start'>
 						<p class='m-0 brand'>PLUTO</p>
 						<p class='d-none d-sm-inline subtext m-0 mt-1 pr-sm-4 text-muted'>As a developer, it can be overwhelming keeping track of your deliverables, achieving your requirements and all. Or is it the stress involved in keeping track of all the next groundbreaking ideas you have. We understand and dont want you to miss out on creating the future.</p>
 						<p class='d-inline d-sm-none m-0 mt-1 text-white subtext'>
@@ -81,8 +84,7 @@
 							<img src='static/Images/Home/plan.svg' class='mr-3 mb-3 mb-md-0' width='50px' height='50px'/> 
 							<div class='d-flex flex-column align-items-center align-items-md-start'>
 								<p class='function m-0 mb-2 mb-md-3 font-weight-bold'>Planning In Projects</p>
-								<p class='function-text text-muted'>Always be aware of the current status of a project. What has been done,
-								what remains to be done and what needs to be improved.	</p>
+								<p class='function-text text-muted'>Go the whole nine yards with project planning. Determine requirements, work out deliverables and build with ease. </p>
 							</div>
 						</div>
 						<div class='d-flex flex-column flex-md-row mb-3'>
@@ -124,8 +126,12 @@
 			</div>
 		</div>
 
-		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+		<button class="material-scrolltop" type="button"></button>
+
+
+		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/Home/index.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/Material/material-scrolltop.js') }}"></script>
 	</body>
 </html>

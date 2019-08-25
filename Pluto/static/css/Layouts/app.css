@@ -2,6 +2,16 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+
+nav.fixed
+{
+	position:fixed;
+	top:0;
+	z-index:9999;
+	transition:all 1s ease-out;
+    background: rgba(0,0,0,0.5)
+}
+
 .container-fluid
 {
 	background:rgba(0,0,0,0.006);

@@ -2,6 +2,16 @@
 
 $(document).ready(function() {
 
+
+	// configuration options for the scroll-to-top button
+
+    $('body').materialScrollTop({
+	    
+	    duration:1000,
+	    easing:'swing'
+	});
+
+
 	// setting the active class in the sidebar
 
 	let menuOptions=$('ul.menu li');

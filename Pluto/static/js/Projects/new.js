@@ -51,18 +51,21 @@ $(document).ready(function() {
 		if(types.length == 1) {
 
 			toastr.error("Invalid file format");
+			fileInput.val("");
 			return false;
 		}
 
 		if(imageTypes.indexOf(types[1].toLowerCase()) == -1) {
 
 			toastr.error('Invalid file format');
+			fileInput.val("");
 			return false;
 		}
 
 		if(file.size > 1200000) {
 
 			toastr.error('Selected image is too large');
+			fileInput.val("");
 			return false;
 		}
 

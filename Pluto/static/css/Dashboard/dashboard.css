@@ -66,12 +66,13 @@ a:hover
 .null div
 {
 	position:relative;
-	top:20vh;
+	top:22.5vh;
 }
 
 .null p
 {
 	font-family:'Quicksand', sans-serif;
+	font-size: 1.15em;
 }
 
 
