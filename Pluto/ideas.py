@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, url_for, request, session, flash, render_template
+from flask import Blueprint, abort, redirect, url_for, request, session, flash, render_template
 from Pluto.models import Idea, db, EditIdea
 from Pluto.middlewares import authMiddleware
 
@@ -33,6 +33,9 @@ def all():
 def view(id, slug):
     idea = Idea.query.get(id)
 
+    if idea is None:
+        abort(404)
+
     # making sure that the slug is correct
     if idea.name.lower().replace(' ', '-') != slug:
         flash('You do not have access', 'error')
@@ -50,6 +53,9 @@ def view(id, slug):
 @authMiddleware
 def edit(id):
     idea = Idea.query.get(id)
+
+    if idea is None:
+        abort(404)
 
     # checking if the creator of the idea is the authenticated user
     if idea.user_id != session['user_id']:
@@ -84,6 +90,10 @@ def edit(id):
 @authMiddleware
 def delete(id):
     idea=Idea.query.get(id)
+
+    if idea is None:
+        abort(404)
+
     db.session.delete(idea)
     db.session.commit()
     flash('Idea deleted!', 'success')

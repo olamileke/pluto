@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, current_app, session, request, url_for, flash
+from flask import Blueprint, abort, redirect, render_template, current_app, session, request, url_for, flash
 from Pluto.middlewares import authMiddleware
 from Pluto.models import Project, Task, Idea, EditIdea, db
 from werkzeug.utils import secure_filename
@@ -37,6 +37,10 @@ def createProject(formData, image):
 @authMiddleware
 def fromIdea(id):
     idea = Idea.query.get(id)
+
+    if idea is None:
+        abort(404)
+
     if request.method == 'POST':
         if validateProjectInfo(request.form, request.files, True):
             edits = EditIdea.query.filter((EditIdea.idea_id == id)).all()
@@ -53,6 +57,9 @@ def fromIdea(id):
 @authMiddleware
 def view(id, slug):
     project = Project.query.get(id)
+
+    if project is None:
+        abort(404)
 
     # making sure that the user enters the proper slug
     if project.name.lower().replace(' ', '-') != slug:
@@ -81,7 +88,11 @@ def all():
 @bp.route('/edit/<int:id>', methods=('GET', 'POST'))
 @authMiddleware
 def edit(id):
-    project = Project.query.filter((Project.id == id)).first()
+    project = Project.query.get(id)
+
+    if project is None:
+        abort(404)
+
     if request.method == 'POST':
         if validateProjectInfo(request.form, request.files, False):
             project.name = request.form['name']
@@ -112,6 +123,10 @@ def edit(id):
 @authMiddleware
 def delete(id):
     project = Project.query.get(id)
+
+    if project is None:
+        abort(404)
+
     tasks = Task.query.filter((Task.project_id == project.id)).all()
 
     for task in tasks:
@@ -128,6 +143,9 @@ def delete(id):
 @authMiddleware
 def complete(id):
     project = Project.query.get(id)
+
+    if project is None:
+        abort(404)
 
     if project.is_completed:
         project.is_completed = False

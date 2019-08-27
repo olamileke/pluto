@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>404</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Errors/404.css') }}">
+		<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	</head>
+	<body>
+		<div class='container-fluid'>
+			<div class='row error-container d-flex flex-column flex-md-row align-items-center align-items-md-center justify-content-center justify-content-md-start'>
+				
+				<div class='col-md-6 mb-4 mb-md-0 d-flex justify-content-center align-items-center'>
+					<img src="{{ url_for('static', filename='images/Errors/rocket.svg') }}">
+				</div>
+				<div class='col-md-6 d-flex flex-column justify-content-center align-items-center align-items-md-start'>
+					<p class='m-0 mb-2 error'>404</p>
+					<p class='error-msg m-0 text-muted mb-4 text-center text-md-left'>
+						Oops, this is awkward, we tried really hard but we could not find the page you are 
+						looking for. This does not happen often, believe us<i class='em em-wink ml-2'></i>
+					</p>
+					<a href="{{ url_for('index') }}" class='p-2 text-muted'>Home</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

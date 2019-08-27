@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+.container-fluid
+{
+	background:rgba(0,0,0,0.008);
+	min-height:100vh;
+}
+
+.error-container
+{
+	min-height:100vh;
+}
+
+img
+{
+	width:70%;
+}
+
+.error
+{
+	position:relative;
+	/*top:-20%;*/
+	font-family:'Dosis', sans-serif;
+	font-size:5em;
+}
+
+.error-msg
+{
+	font-family:'Quicksand', sans-serif;
+	line-height:1.5;
+	width:75%;
+	font-size:1.5rem;
+}
+
+a
+{
+	color:unset;
+	text-decoration: none;
+	border-radius:3px;
+	border:1px solid rgba(0,0,0,0.3);
+	font-family:'Raleway', sans-serif;
+	width:fit-content;
+}
+
+a:hover
+{
+	color:unset;
+	text-decoration:none;
+}
+
+@media(max-width:768px)
+{
+	img
+	{
+		width:40%;
+	}
+
+	.error-container div
+	{
+		height:fit-content;
+	}
+}
+
+
+@media(max-width:576px)
+{
+	.error
+	{
+		font-size:3.3em;
+	}
+
+	.error-msg
+	{
+		font-size:unset;
+	}
+}

@@ -32,6 +32,10 @@ def create_app(test_config=None):
     def setPermanentSession():
         session.permanent=True
 
+    @app.errorhandler(404)
+    def display404Page(error):
+        return render_template('Errors/404.html'), 404
+
     @app.route('/')
     def index():
         if 'user_id' in session:
