@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="431.89551"
+   height="439.0827"
+   version="1.1"
+   id="svg15"
+   sodipodi:docname="two-window-rocket.svg"
+   viewBox="0 0 431.89551 439.0827"
+   inkscape:version="0.92pre1_64bit r15016">
+  <defs
+     id="defs19" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="745"
+     id="namedview17"
+     showgrid="false"
+     fit-margin-top="10"
+     fit-margin-left="10"
+     fit-margin-right="10"
+     fit-margin-bottom="10"
+     inkscape:zoom="1.3482654"
+     inkscape:cx="215.94775"
+     inkscape:cy="219.54135"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg15" />
+  <title
+     id="title2">Three Window Rocket</title>
+  <metadata
+     id="metadata7">image/svg+xml<rdf:RDF>
+  <cc:Work
+     rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type
+       rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+    <dc:title>Three Window Rocket</dc:title>
+  </cc:Work>
+</rdf:RDF>
+</metadata>
+  <path
+     stroke-miterlimit="4"
+     id="path3297"
+     d="m 81.578057,278.84971 82.225203,79.61743 C 269.49998,269.87515 403.95907,192.7127 411.30334,20.592123 239.50871,33.478183 163.30655,168.01114 81.57806,278.84971 Z"
+     inkscape:connector-curvature="0"
+     style="fill:#56aaff;fill-rule:evenodd;stroke:#000000;stroke-width:21.18441772;stroke-linejoin:round;stroke-miterlimit:4" />
+  <path
+     stroke-miterlimit="4"
+     id="path3307"
+     d="M 90.404898,270.90556 20.591574,295.11922 C 35.690804,250.35237 59.58439,192.48136 91.82814,172.71041 c 21.18527,-12.99029 71.76137,-3.31233 71.76137,-3.31233 z"
+     inkscape:connector-curvature="0"
+     style="fill:#ff0000;fill-rule:evenodd;stroke:#000000;stroke-width:21.18441772;stroke-linejoin:round;stroke-miterlimit:4" />
+  <path
+     stroke-miterlimit="4"
+     d="m 175.13688,347.93396 -21.95183,70.55722 c 44.25723,-16.53374 101.32834,-42.2794 120.05023,-75.14347 12.30084,-21.59278 0.9985,-71.83078 0.9985,-71.83078 z"
+     id="path3309"
+     inkscape:connector-curvature="0"
+     style="fill:#ff0000;fill-rule:evenodd;stroke:#000000;stroke-width:21.18441772;stroke-linejoin:round;stroke-miterlimit:4" />
+  <path
+     id="svg_2"
+     stroke-miterlimit="4"
+     d="m 249.77686,250.02995 a 42.784689,41.952527 0 1 1 -61.81518,-58.01842 42.784689,41.952527 0 1 1 61.81518,58.01842 z"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:12.74741268;stroke-linejoin:round;stroke-miterlimit:4;stroke-dashoffset:0;marker-start:none;marker-mid:none;marker-end:none" />
+  <path
+     id="svg_1"
+     stroke-miterlimit="4"
+     d="m 325.68769,174.11912 a 42.784713,41.952514 0 1 1 -61.81519,-58.01843 42.784713,41.952514 0 1 1 61.81519,58.01843 z"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:12.74741268;stroke-linejoin:round;stroke-miterlimit:4;stroke-dashoffset:0;marker-start:none;marker-mid:none;marker-end:none" />
+</svg>

@@ -1,12 +1,12 @@
 import os
-from flask import Flask, render_template, session, request
+from flask import Flask, render_template, session, request, flash, redirect, url_for
 from flask_migrate import Migrate
 from . import auth
 from . import projects
 from . import ideas
 from . import user
 from . import tasks
-from .middlewares import authMiddleware
+from .middlewares import authMiddleware, guestMiddleware
 from datetime import timedelta
 
 
@@ -14,7 +14,7 @@ def create_app(test_config=None):
     app = Flask(__name__)
     app.config.from_object(os.getenv('APP_SETTINGS'))
     # app.config['SQLALCHEMY_DATABASE_URI']="postgresql://postgres:Arsenalfc@localhost:5432/pluto"
-    app.config['PERMANENT_SESSION_LIFETIME']=timedelta(days=14)
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=14)
     app.secret_key = os.urandom(16)
 
     from . import models
@@ -30,7 +30,7 @@ def create_app(test_config=None):
 
     @app.before_request
     def setPermanentSession():
-        session.permanent=True
+        session.permanent = True
 
     @app.errorhandler(404)
     def display404Page(error):
@@ -48,13 +48,31 @@ def create_app(test_config=None):
     @app.route('/search')
     @authMiddleware
     def search():
-        term=request.args.get('term')
-        search="%{}%".format(term)
+        term = request.args.get('term')
+        search = "%{}%".format(term)
 
-        projects=models.Project.query.filter(((models.Project.name.ilike(search)) | (models.Project.about.ilike(search))) & (models.Project.user_id == session['user_id'])).all()
-        ideas=models.Idea.query.filter(((models.Idea.name.ilike(search)) | (models.Idea.premise.ilike(search))) & (models.Idea.user_id == session['user_id'])).all()
-        length=len(projects) + len(ideas)
+        projects = models.Project.query.filter(((models.Project.name.ilike(search)) | (
+            models.Project.about.ilike(search))) & (models.Project.user_id == session['user_id'])).all()
+        ideas = models.Idea.query.filter(((models.Idea.name.ilike(search)) | (
+            models.Idea.premise.ilike(search))) & (models.Idea.user_id == session['user_id'])).all()
+        length = len(projects) + len(ideas)
 
         return render_template('search.html', term=term, projects=projects, ideas=ideas, length=length)
+
+    @app.route('/account/activate/<token>')
+    @guestMiddleware
+    def activateAccount(token):
+        user = models.User.query.filter(
+            (models.User.activation_token == token)).first()
+
+        if user is None:
+            flash('Invalid activation token', 'error')
+            return redirect(url_for('auth.signup'))
+
+        user.activation_token = None
+        models.db.session.commit()
+
+        flash('Account Activated!', 'success')
+        return redirect(url_for('auth.login'))
 
     return app
