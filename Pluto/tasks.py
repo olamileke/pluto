@@ -27,7 +27,7 @@ def update():
 
         if tasks[k]:
             task.is_completed = True
-            task.completed_at = datetime.utcnow()
+            task.completed_at = datetime.now()
         else:
             task.is_completed = False
             task.completed_at = None

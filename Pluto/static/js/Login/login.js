@@ -88,4 +88,55 @@ $(document).ready(function() {
 			togglePassword.removeClass('fa-eye-slash').addClass('fa-eye');
 		}
 	})
+
+
+	// forgot password
+
+	let fpasswordbtn=$('a.forgot-password');
+	let email=$('.email');
+	let loadContainer=$('.loader-container');
+	let host=location.hostname;
+	let protocol=location.protocol;
+
+
+	fpasswordbtn.click(function() {
+
+		$('.error-notif.mail').remove();
+
+		if(email.val().length == 0) {
+
+			email.after('<p class="error-notif mail">* Please enter a valid email</p>');
+		}
+		else {
+
+			loadContainer.toggleClass('active');
+			sendPasswordResetMail();
+		}
+	})
+
+
+	function sendPasswordResetMail() {
+
+		return $.ajax(`${protocol}//${host}:5000/user/send_password_reset_mail`, {type:'POST', dataType:'text', data:{
+			'email':email.val()
+		},
+		error:function() {
+
+			toastr.error("An error occurred");
+			loadContainer.toggleClass('active');
+		},
+		success:function(data) {
+
+			if(data == 'error') {
+
+				toastr.error("Invalid email!")
+			}
+			else {
+				
+				toastr.success("Check your email to complete the process");
+			}
+
+			loadContainer.toggleClass('active');
+		}})
+	}
 }) 

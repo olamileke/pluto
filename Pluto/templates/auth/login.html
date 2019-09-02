@@ -23,7 +23,7 @@
 						<p class='m-0 mb-4 brand'><a href="{{ url_for('index') }}" class='text-white'>Pluto</a></p>
 
 						<div class='w-100 mb-4'>
-							<input type="text" name="identifier" class='form-control form-control-sm' placeholder='Email or Dev Nickname'>
+							<input type="text" name="identifier" class='form-control form-control-sm email' placeholder='Email or Dev Nickname'>
 						</div>
 
 						<div class='w-100 mb-4' style='position:relative;'>
@@ -34,7 +34,7 @@
 						<button type='submit' class='btn btn-primary w-100 mb-4'>Login</button>
 						<div class='text-left w-100 links'>
 							<p class='mb-2'>
-								<a href="" class='text-white'>Forgot Password</a>
+								<a class='text-white forgot-password'>Forgot Password</a>
 							</p>
 							<p class='mb-2'>
 								<a href="{{ url_for('auth.signup') }}" class='text-white'>Signup</a>
@@ -43,6 +43,10 @@
 					</form>
 				</div>
 			</div>
+		</div>
+
+		<div class='loader-container d-flex justify-content-center align-items-center'>
+			<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 		</div>
 
 		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
