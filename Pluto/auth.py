@@ -135,5 +135,5 @@ def getCurrentUser():
     else:
         g.user = None
 
-    g.URL = current_app.config['APP_URL']
+    g.URL = request.host_url
 

@@ -90,6 +90,16 @@ $(document).ready(function() {
 	})
 
 
+	
+	// validating the email address
+
+	function validateEmail(email) {
+
+		 let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  		 return re.test(email);
+	}
+
+
 	// forgot password
 
 	let fpasswordbtn=$('a.forgot-password');
@@ -103,7 +113,7 @@ $(document).ready(function() {
 
 		$('.error-notif.mail').remove();
 
-		if(email.val().length == 0) {
+		if(!validateEmail(email.val())) {
 
 			email.after('<p class="error-notif mail">* Please enter a valid email</p>');
 		}

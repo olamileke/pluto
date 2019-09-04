@@ -21,10 +21,10 @@
 						<li class='d-flex flex-column mb-4'>
 
 							{% if g.user.avatar is none %}
-								<img src="{{ g.URL }}/static/images/Users/anon.png" class='mb-2' width='65px' height="65px" style='border-radius:50%'>
+								<img src="{{ g.URL }}static/images/Users/anon.png" class='mb-2' width='65px' height="65px" style='border-radius:50%'>
 							{% else %}
 
-								<img src="{{ g.URL }}/static/images/Users/{{g.user.avatar}}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>	
+								<img src="{{ g.URL }}static/images/Users/{{g.user.avatar}}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>	
 							{% endif %}
 							
 							<p class='mt-2 mb-1'>Hello {{ g.user.name.split(' ')[1] }} !</p>
@@ -82,10 +82,10 @@
 				<ul class='list-unstyled mr-2 menu text-right text-white mb-2 mb-sm-4'>
 					<li class='mb-4'>
 						{% if g.user.avatar is none %}
-								<img src="{{ g.URL }}/static/images/Users/anon.png" class='mb-2' width='65px' height="65px" style='border-radius:50%'>
+								<img src="{{ g.URL }}static/images/Users/anon.png" class='mb-2' width='65px' height="65px" style='border-radius:50%'>
 							{% else %}
 
-								<img src="{{ g.URL }}/static/images/Users/{{g.user.avatar}}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>	
+								<img src="{{ g.URL }}static/images/Users/{{g.user.avatar}}" class='mb-2' width='65px' height="65px" style='border-radius:50%'>	
 							{% endif %}
 							
 							<p class='mt-2 mb-1'>Hello {{ g.user.name.split(' ')[1] }} !</p>

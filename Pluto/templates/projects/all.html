@@ -21,7 +21,11 @@
 						<div class='px-1'>
 							<p class='project-name m-0 mb-1'>{{ project.name }}</p>
 							<p class='mb-1 info text-muted'>created {{ project.created_at.strftime('%B %d,%Y') }}</p>
-							<p class='info text-muted'><i class='fa fa-check mr-1'></i> {{ project.tasks | length }} completed tasks</p>
+							{% if project.c_tasks_count > 1 %}
+								<p class='info text-muted'><i class='fa fa-check mr-1'></i> {{ project.c_tasks_count }} completed tasks</p>
+							{% else %}
+								<p class='info text-muted'><i class='fa fa-check mr-1'></i> {{ project.c_tasks_count }} completed task</p>
+							{% endif %}
 						</div>
 					</a>
 				{% endfor %}

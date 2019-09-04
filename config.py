@@ -2,7 +2,6 @@ import os
 
 
 class Config(object):
-    APP_URL = 'http://localhost:5000'
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True

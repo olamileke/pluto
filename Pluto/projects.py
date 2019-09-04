@@ -82,6 +82,11 @@ def view(id, slug):
 def all():
     projects = Project.query.filter(
         (Project.user_id == session['user_id'])).all()
+
+    for project in projects:
+        project.c_tasks_count = len(Task.query.filter(
+            (Task.project_id == project.id) & (Task.is_completed == True)).all())
+
     return render_template('projects/all.html', projects=projects)
 
 
@@ -155,7 +160,7 @@ def complete(id):
     db.session.commit()
     flash('Project updated!', 'success')
 
-    return redirect(url_for('projects.view', id=project.id, slug=project.name.lower().replace(' ','-')))
+    return redirect(url_for('projects.view', id=project.id, slug=project.name.lower().replace(' ', '-')))
 
 
 def validateProjectInfo(form, files, required):

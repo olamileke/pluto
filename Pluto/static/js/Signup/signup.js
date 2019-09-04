@@ -28,6 +28,12 @@ $(document).ready(function() {
 			param=false;
 		}
 
+		if(!validateEmail(email.val())) {
+
+			email.after('<p class="error-notif">* Must be a valid email address</p>');
+			param=false;
+		}
+
 		if(devInput.val().length < 5) {
 
 			devInput.after('<p class="error-notif">* Must be at least 5 characters long</p>');
@@ -56,6 +62,12 @@ $(document).ready(function() {
 		})
 
 		return param;
+	}
+
+	function validateEmail(email) {
+
+		 let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  		 return re.test(email);
 	}
 
 

@@ -13,7 +13,7 @@ from datetime import timedelta
 def create_app(test_config=None):
     app = Flask(__name__)
     app.config.from_object(os.getenv('APP_SETTINGS'))
-    app.config['SQLALCHEMY_DATABASE_URI']="postgresql://postgres:Arsenalfc@localhost:5432/pluto"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:Arsenalfc@localhost:5432/pluto"
     app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=14)
     app.secret_key = os.urandom(16)
 
@@ -41,6 +41,11 @@ def create_app(test_config=None):
         if 'user_id' in session:
             projects = models.Project.query.filter((models.Project.user_id == session['user_id']) & (
                 models.Project.is_completed == False)).all()
+
+            for project in projects:
+                project.c_tasks_count = len(models.Task.query.filter(
+                    (models.Task.project_id == project.id) & (models.Task.is_completed == True)).all())
+
             return render_template('auth_index.html', projects=projects)
 
         return render_template('index.html')

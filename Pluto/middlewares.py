@@ -5,7 +5,7 @@ def guestMiddleware(view):
 	@functools.wraps(view)
 	def middleware(**kwargs):
 		if 'user_id' in session:
-			flash('You do not have access', 'success')
+			flash('You do not have access', 'info')
 			return redirect(url_for('index'))
 
 		return view(**kwargs)
@@ -17,7 +17,7 @@ def authMiddleware(view):
 	@functools.wraps(view)
 	def middleware(**kwargs):
 		if 'user_id' not in session:
-			flash('You must be logged in', 'success')
+			flash('You must be logged in', 'error')
 			return redirect(url_for('auth.login'))
 
 		return view(**kwargs)
