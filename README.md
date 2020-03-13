@@ -11,9 +11,9 @@ Still in your directory, run <b>venv\scripts\activate</b> to activate the virtua
 
 In the postgresql admin, create a database for the application (preferably named pluto). Then, fill in the relevant credentials in the config.py file.
 
-Next, run the following commands
-<b>python manage.py db init</b> to create the migrations subfolder
-<b>python manage.py db migrate</b> to create the migration based on the models.py file in the /Pluto subdirectory
+Next, run the following commands\n
+<b>python manage.py db init</b> to create the migrations subfolder\n
+<b>python manage.py db migrate</b> to create the migration based on the models.py file in the /Pluto subdirectory\n
 <b>python manage.py db upgrade</b> to run the migration and create the database schema for the application
 
 Finally, execute <b>python -m flask run</b> to run the application. Access it at localhost:5000 in your browser.
