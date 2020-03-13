@@ -64,6 +64,8 @@ $(document).ready(function() {
 		return param;
 	}
 
+	// validating the email address
+
 	function validateEmail(email) {
 
 		 let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
