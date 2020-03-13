@@ -1,0 +1,8 @@
+# Virtual Machine Folder
+venv
+
+# Migrations Folder
+migrations
+
+# Pycache folder
+__pycache__
