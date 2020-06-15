@@ -65,6 +65,9 @@ img
 .sidebar
 {
 	font-family:'Quicksand', sans-serif;
+	padding:0;
+	padding-right:1.8%;
+	padding-left: 2.8%;
 }
 
 .sidebar a
@@ -77,8 +80,8 @@ img
 .sidebar ul
 {
 	position:relative;
-	left:15%;
-	top:5%;
+	/*width:80%;*/
+	/*left:6%;*/
 }
 
 
@@ -200,6 +203,7 @@ button.update
 
 .responsive-sidebar
 {
+	font-family:'Quicksand', sans-serif;
 	position:fixed;
 	top:0;
 	height:100vh;
@@ -231,12 +235,11 @@ img.backdrop
 {
 	color:unset;
 	text-decoration:none;
-	font-family:'Quicksand', sans-serif;
 }
 
 .responsive-sidebar li.active a
 {
-	border-bottom:1px solid aqua;
+	border-bottom:1px solid #1D6A96;
 	padding-bottom:5px;
 }
 

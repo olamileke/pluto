@@ -12,7 +12,7 @@
 		<div class='container-fluid p-0'>
 			<div style='position:relative;' id='home'>
 				<nav class='navbar navbar-expand-sm navbar-light py-2 px-3 px-lg-5'>
-					<a href="{{ url_for('index') }}" class='navbar-brand'>Pluto</a>
+					<a href="{{ url_for('index') }}" class='mt-2 navbar-brand'>Pluto</a>
 
 					<button class='navbar-toggler mt-2 mr-2' type='button' data-toggle='collapse' data-target="#navbarSupportedContent">
 						<div class='navtoggle'>
@@ -47,12 +47,12 @@
 				<div class='row py-lg-5 px-4 px-sm-0 px-lg-5 m-0 d-flex align-items-center justify-content-lg-center  align-items-lg-start landing-page' style='overflow-x:hidden'>
 					<div class='col-0 col-sm-1 d-lg-none'></div>
 					<div class='text-center brand-parent text-sm-left col-sm-10 col-lg-6 col-xl-5 d-flex py-sm-4 flex-column align-items-start brand-description'>
-						<p class='m-0 brand'>PLUTO</p>
+						<p class='m-0 ml-1 ml-lg-0 brand'>PLUTO</p>
 						<p class='d-none d-sm-inline subtext m-0 mt-1 pr-sm-4 text-muted'>As a developer, it can be overwhelming keeping track of your deliverables, achieving your requirements and all. Or is it the stress involved in keeping track of all the next groundbreaking ideas you have. We understand and dont want you to miss out on creating the future.</p>
 						<p class='d-inline d-sm-none m-0 mt-1 text-white subtext'>
 							Your Companion as You Create The Future
 						</p>
-						<div class='buttons mt-4'>
+						<div class='buttons mt-3'>
 							<a href="{{ url_for('auth.signup') }}" style='background:#FF8F42; color:#fff;border:none'>Get Started</a>
 						</div>
 					</div>
@@ -76,7 +76,7 @@
 			</div>
 			<div class='row section-functions py-4 py-md-5 d-flex flex-column flex-md-row justify-content-center align-items-center px-2 px-lg-5' id='services'>
 					<div class='col-11 col-sm-9 col-md-5 text-center text-md-left pt-3 py-md-5 mr-md-3 mr-lg-0'>
-						<p class='tag-line font-weight-bold px-1 px-lg-5'>Built For Productivity</p>
+						<p class='tag-line px-1 px-lg-5'>Built For Productivity</p>
 						<p class='mt-2 px-1 px-lg-5 tag-body text-muted'>Created as a tool to speed up development, but why stop there really, Pluto offers so much more</p>
 					</div>
 					<div class='col-11 col-sm-9 col-md-6 col-lg-5 d-flex py-3 flex-column align-items-center'>
@@ -105,23 +105,25 @@
 					</div>
 			</div>
 			<div class='row d-flex justify-content-center footer py-5 px-5' style='background:url("static/images/Home/concrete-wall.png")'>
-				<div class='text-center text-md-left col-md-4 col-lg-3 d-flex flex-column mr-md-4'>
+				<div class='col-md-4 col-lg-3 d-flex flex-column mr-md-4'>
 					<p class='brand m-0 mb-2'>Pluto</p>
-					<p class='text-center text-md-left w-100 brand-text'>Streamlining the development process by enabling proper project
+					<p class='w-100 brand-text'>Streamlining the development process by enabling proper project
 					conception, planning and building</p>
 				</div>
-				<div class='text-center text-md-left col-md-4 d-flex flex-column'>
-					<p class='contact-heading mt-4'>Get In Touch</p>
-					<p class='text-center text-md-left w-100 brand-text m-0 mb-2'><i class='fa fa-envelope mr-2'></i> projectpluto@gmail.com</p>
-					<p class='text-center text-md-left w-100 brand-text m-0 mb-2'><i class='fa fa-phone mr-2' style='font-size:1.3em'></i> +2348179868840</p>
-					<p class='text-center text-md-left w-100 brand-text'><i class='fa fa-home mr-2' style='font-size:1.4em'></i>
-						3, Bisi Awosika Road, Ologolo, Lekki
+				<div class='col-md-3 d-flex flex-column mr-md-4 pl-lg-5'>
+					<p class='contact-heading mt-2 mt-lg-4 mb-3'>Social Media</p>
+					<p class='w-100 brand-text m-0 mb-2'><i class='fa fa-facebook mr-2 mr-md-3'  style='font-size:1.3em'></i> Facebook</p>
+					<p class='w-100 brand-text m-0 mb-2'><i class='fa fa-twitter mr-2 mr-md-3' style='font-size:1.3em'></i>Twitter</p>
+					<p class='w-100 brand-text'><i class='fa fa-instagram mr-2 mr-md-3' style='font-size:1.4em'></i>Instagram
 					</p>
 				</div>
-				<div class='text-center text-md-left col-md-3 d-flex flex-column mr-md-4'>
-					<p class='brand m-0 mb-2'>Social Media</p>
-					<p class='text-center text-md-left w-100 brand-text'>Streamlining the development process by enabling proper project
-					conception, planning and building</p>
+				<div class='col-md-4 d-flex flex-column'>
+					<p class='contact-heading mt-2 mt-lg-4'>Get In Touch</p>
+					<p class='w-100 brand-text m-0 mb-2'><i class='fa fa-envelope mr-2 mr-md-3'></i> projectpluto@gmail.com</p>
+					<p class='w-100 brand-text m-0 mb-2'><i class='fa fa-phone mr-2 mr-md-3' style='font-size:1.3em'></i> +2348179868840</p>
+					<p class='w-100 brand-text'><i class='fa fa-home mr-2 mr-md-3' style='font-size:1.4em'></i>
+						3, Bisi Awosika Road, Ologolo, Lekki
+					</p>
 				</div>
 			</div>
 		</div>

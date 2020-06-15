@@ -15,10 +15,10 @@
 
 		<div class='container-fluid p-0'>
 			<div class='row'>
-				<div class='col-lg-3 d-none d-lg-block sidebar p-5 d-lg-flex flex-column justify-content-between'>
+				<div class='col-lg-2 d-none d-lg-block sidebar pt-5 d-lg-flex flex-column justify-content-between'>
 					
-					<ul class='list-unstyled text-white pr-4 menu'>
-						<li class='d-flex flex-column mb-4'>
+					<ul class='list-unstyled text-white menu w-100'>
+						<li class='d-flex flex-column align-items-center mb-4'>
 
 							{% if g.user.avatar is none %}
 								<img src="{{ g.URL }}static/images/Users/anon.png" class='mb-2' width='65px' height="65px" style='border-radius:50%'>
@@ -48,7 +48,7 @@
 						</li>
 					</ul>
 
-					<ul class='list-unstyled text-white pr-4 options'>
+					<ul class='list-unstyled text-white options w-100'>
 						<li class='py-2 mb-2 d-flex align-items-center px-3'>
 							<a href="#updateDetailsModal" data-toggle="modal"><i class='fa fa-refresh mr-2'></i> Update Details</a>
 						</li>
@@ -58,8 +58,8 @@
 					</ul>
 
 				</div>
-				<div class='offset-3'></div>
-				<div class='col-lg-9 d-flex flex-column p-0 main'>
+				<div class='offset-2'></div>
+				<div class='col-lg-10 d-flex flex-column p-0 main'>
 					<nav class='py-3 px-4 px-sm-5 px-lg-4 w-100 d-flex justify-content-between'>
 						<a href="{{ url_for('index') }}" class='navbar-brand mr-auto ml-2 ml-sm-0'>Pluto</a>
 						<div class='mr-2 mr-sm-0 mr-lg-4 d-flex align-items-center'>
@@ -78,7 +78,6 @@
 			</div>
 
 			<div class='responsive-sidebar d-flex flex-column pr-4 d-lg-none'>
-				<!-- <img src="{{ url_for('static', filename='images/Layouts/noisy_net/.png') }}" class='backdrop'> -->
 				<ul class='list-unstyled mr-2 menu text-right text-white mb-2 mb-sm-4'>
 					<li class='mb-4'>
 						{% if g.user.avatar is none %}
