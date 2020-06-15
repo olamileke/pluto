@@ -8,9 +8,9 @@ class Config(object):
     SECRET_KEY = os.urandom(16)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
-    DB_NAME = ""
-    DB_USER = ""
-    DB_PASSWORD = ""
+    DB_NAME = "pluto"
+    DB_USER = "postgres"
+    DB_PASSWORD = "Arsenalfc"
     MAIL_BASE_URL = ""
     MAIL_API_KEY = ""
     MAIL_FROM = "Pluto"

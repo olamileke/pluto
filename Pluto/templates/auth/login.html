@@ -22,17 +22,19 @@
 					<form method='POST' action="{{ url_for('auth.login') }}" class='d-flex flex-column p-3 align-items-center'>
 						<p class='m-0 mb-4 brand'><a href="{{ url_for('index') }}" class='text-white'>Pluto</a></p>
 
-						<div class='w-100 mb-4'>
+						<div class='w-100 mb-4 px-2'>
 							<input type="text" name="identifier" class='form-control form-control-sm email' placeholder='Email or Dev Nickname'>
 						</div>
 
-						<div class='w-100 mb-4' style='position:relative;'>
+						<div class='w-100 mb-4 px-2' style='position:relative;'>
 							<input type="password" name="password" class='form-control form-control-sm password' placeholder="Password">
 							<i class='fa fa-eye toggle'></i>
 						</div>
 
-						<button type='submit' class='btn btn-primary w-100 mb-4'>Login</button>
-						<div class='text-left w-100 links'>
+						<div class='px-2 w-100'>
+							<button type='submit' class='btn btn-primary w-100 mb-4'>Login</button>
+						</div>
+						<div class='px-2 text-left w-100 links'>
 							<p class='mb-2'>
 								<a class='text-white forgot-password'>Forgot Password</a>
 							</p>

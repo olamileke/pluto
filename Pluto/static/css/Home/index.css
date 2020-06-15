@@ -136,6 +136,7 @@ div.overlay
 
 .tag-line
 {
+	text-transform: uppercase;
 	font-size:2.4em;
 	font-family:'Raleway', sans-serif;
 }
@@ -239,9 +240,26 @@ div.navtoggle span:before
 
 @media(max-width:991px)
 {
+	.brand-parent
+	{
+		position:relative;
+		top:-3vh;
+	}
+
 	.function-text
 	{
 		width:90%;
+	}
+
+	.tag-line
+	{
+		font-size:1.7em;
+		text-transform:capitalize;
+	}
+
+	.tag-body
+	{
+		font-size:1.3em;
 	}
 
 	.landing-page
@@ -267,6 +285,7 @@ div.navtoggle span:before
 
 	.brand
 	{
+		font-size:4em;
 		color:#fff !important;
 	}
 
@@ -289,12 +308,13 @@ div.navtoggle span:before
 {
 	.tag-line
 	{
-		font-size:1.5em;
+		font-size:1.1em;
+		text-transform:capitalize;
 	}
 
 	.tag-body
 	{
-		font-size:1.15em;
+		font-size:1em;
 	}
 
 	.brand
@@ -308,13 +328,14 @@ div.navtoggle span:before
 {
 	.brand
 	{
-		font-size:2.9em;
+		font-size:2.4em;
 		font-family:'Quicksand', sans-serif;
 	}
 
 	.subtext
 	{
 		font-size:1.1em;
+		text-align:left;
 	}
 
 	.nav-link.login
@@ -327,10 +348,20 @@ div.navtoggle span:before
 	{
 		height:calc(60vh - 73px);
 	}
+}
 
+@media(max-width:390px)
+{
 	.brand-parent
 	{
-		position:relative;
-		top:-13%;
+		top:-5vh;
+	}
+}
+
+@media(max-width:330px)
+{
+	.brand-parent
+	{
+		top:-11vh;
 	}
 }
