@@ -359,6 +359,12 @@ div.navtoggle span:before
 	{
 		height:calc(60vh - 73px);
 	}
+
+	.footer
+	{
+		padding-left:10vw;
+		padding-right:10vw;
+	}
 }
 
 @media(max-width:450px)
