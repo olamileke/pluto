@@ -22,7 +22,7 @@ nav.fixed
 .sidebar
 {
 	min-height:100vh;
-	background:#135589;
+	background:#1D6A96;
 	position:fixed;
 }
 
@@ -93,18 +93,8 @@ img
 
 .sidebar li.active
 {
-	background:rgba(255 , 255, 255, 0.8);
+	box-shadow:0px 3px 8px 3px rgba(0,0,0,0.1);
 	border-radius:5px;
-}
-
-.sidebar li.active a
-{
-	color:rgba(0,0,0,0.6);
-}
-
-.sidebar li.active i
-{
-	color:#000;
 }
 
 .dev-name

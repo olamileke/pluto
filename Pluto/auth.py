@@ -115,11 +115,15 @@ def validateLogin(formData):
         User.dev_name == formData['identifier']) & (User.activation_token == None)).first()
 
     if user is None:
-        error = 'Incorrect Username or Password'
+        error = 'Incorrect username or password'
         flash(error, 'error')
         return False
     elif not check_password_hash(user.password, formData['password']):
-        error = 'Incorrect Username or Password'
+        error = 'Incorrect username or password'
+        flash(error, 'error')
+        return False
+    elif user.activation_token is not None:
+        error = 'Incorrect username or password'
         flash(error, 'error')
         return False
     else:

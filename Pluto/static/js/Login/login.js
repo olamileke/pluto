@@ -105,7 +105,7 @@ $(document).ready(function() {
 	let fpasswordbtn=$('a.forgot-password');
 	let email=$('.email');
 	let loadContainer=$('.loader-container');
-	let host=location.hostname;
+	let host=location.host;
 	let protocol=location.protocol;
 
 
@@ -127,11 +127,13 @@ $(document).ready(function() {
 
 	function sendPasswordResetMail() {
 
-		return $.ajax(`${protocol}//${host}:5000/user/send_password_reset_mail`, {type:'POST', dataType:'text', data:{
-			'email':email.val()
-		},
-		error:function() {
+		const resetUrl = `${protocol}//${host}/user/send_password_reset_mail`;
 
+		return $.ajax(resetUrl, {type:'POST', dataType:'text', data:{
+			'email':email.val() 
+		},
+		error:function(err) {
+			console.log(err.responseText);
 			toastr.error("An error occurred");
 			loadContainer.toggleClass('active');
 		},

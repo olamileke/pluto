@@ -13,7 +13,6 @@ class User(db.Model):
     email = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     avatar = db.Column(db.String(400), nullable=True)
-    is_activated = db.Column(db.Boolean, nullable=False, default=0)
     activation_token = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.now)

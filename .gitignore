@@ -6,3 +6,6 @@ migrations
 
 # Pycache folder
 __pycache__
+
+#app configurations
+config.py

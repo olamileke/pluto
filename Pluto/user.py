@@ -46,7 +46,7 @@ def update():
 @bp.route('/send_password_reset_mail', methods=['POST'])
 def sendPasswordResetMail():
     user = User.query.filter((User.email == request.form['email'])).first()
-
+    
     if user is None:
         return 'error'
 
